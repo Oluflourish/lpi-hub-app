@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:lpi_app/Screens/Dashboard/dashboard_screen.dart';
 import 'package:lpi_app/components/rounded_button.dart';
+import 'package:lpi_app/functions/utility.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class Uploader extends StatefulWidget {
   final File file;
@@ -44,6 +46,7 @@ class _UploaderState extends State<Uploader> {
   String imageCloudPath;
   String downloadAddress;
   String _downlaodUrl;
+  bool showSpinner = false;
 
   _startUpload() {
     String filePath = 'images/${DateTime.now()}.png';
@@ -95,41 +98,48 @@ class _UploaderState extends State<Uploader> {
             );
           });
     } else {
-      return RoundedButton(
-        text: 'REGISTER MEMBER',
-        press: () async {
-          _startUpload();
-          Timestamp created = Timestamp.now();
+      return ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: RoundedButton(
+          text: 'REGISTER MEMBER',
+          press: () async {
+            try {
+              _startUpload();
+              Timestamp created = Timestamp.now();
+              
 
-          await Future.delayed(const Duration(milliseconds: 5000), () {
-            setState(() {
-              // Here you can write your code for open new
-              getImageUrl(imageCloudPath);
-            });
-             
-          });
+              await Future.delayed(const Duration(milliseconds: 5000), () {
+                setState(() {
+                  // Here you can write your code for open new
+                  getImageUrl(imageCloudPath);
+                });
+              });
 
-          await Future.delayed(const Duration(milliseconds: 2000), () {
-            print('The download path we seek is ---->  $_downlaodUrl');
-          _firestore.collection('members').add({
-            'firstname': widget.firstname,
-            'email': widget.email,
-            'createdAt': created,
-            'gender': widget.gender,
-            'surname': widget.surname,
-            'phone': widget.phone,
-            'accountLevel': widget.membershipType,
-            'profilepic': imageCloudPath,
-            'downloadUrl': _downlaodUrl
-          });
-          print('The Image path we seek is ---->  $imageCloudPath');
-          Navigator.pushNamed(context, DashboardScreen.id);
-             
-          });
-          
-         
-          
-        },
+              await Future.delayed(const Duration(milliseconds: 2000), () {
+                print('The download path we seek is ---->  $_downlaodUrl');
+                _firestore.collection('members').add({
+                  'firstname': widget.firstname,
+                  'email': widget.email,
+                  'createdAt': created,
+                  'gender': widget.gender,
+                  'surname': widget.surname,
+                  'phone': widget.phone,
+                  'accountLevel': widget.membershipType,
+                  'profilepic': imageCloudPath,
+                  'downloadUrl': _downlaodUrl,
+                  'isloggedIn': false
+                });
+                print('The Image path we seek is ---->  $imageCloudPath');
+                Navigator.pushNamed(context, DashboardScreen.id);
+              });
+            } catch (e) {
+              
+
+              Utility.getInstance()
+                  .showAlertDialog(context, 'Upload Error', e.toString());
+            }
+          },
+        ),
       );
     }
   }

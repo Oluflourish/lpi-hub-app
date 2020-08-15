@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lpi_app/Screens/AllMembers/body.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
 import 'package:lpi_app/Screens/Scan/scanbody.dart';
+import 'package:lpi_app/Screens/TabView/body.dart';
 import 'package:lpi_app/Screens/UserRegistration/userReg_screen.dart';
 
 class GridDashboard extends StatelessWidget {
@@ -59,8 +60,7 @@ class GridDashboard extends StatelessWidget {
           children: myList.map((data) {
             return Container(
               decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10)),
+                  color: Colors.black, borderRadius: BorderRadius.circular(10)),
               child: InkResponse(
                 onTap: () {
                   _onTileClicked(myList.indexOf(data));
@@ -69,7 +69,7 @@ class GridDashboard extends StatelessWidget {
                     Navigator.pushNamed(context, ScanScreen.id);
                   }
                   if (myList.indexOf(data) == 1) {
-                    
+                    Navigator.pushNamed(context, TabViewScreen.id);
                   }
                   if (myList.indexOf(data) == 3) {
                     Navigator.pushNamed(context, ListViewScreen.id);
