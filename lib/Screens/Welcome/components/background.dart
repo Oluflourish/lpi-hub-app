@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lpi_app/constants.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -11,6 +12,8 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      
+      color: Colors.grey[850],
       height: size.height,
       width: double.infinity,
       child: Stack(
