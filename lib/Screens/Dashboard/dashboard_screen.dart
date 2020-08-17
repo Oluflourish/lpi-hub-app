@@ -133,54 +133,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 16, right: 16),
-              child: Opacity(
-                opacity: 0.9,
-                child: Container(
-                  color: Colors.black,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            child: Text(
-                              'Hello, $profile',
-                              style: GoogleFonts.openSans(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                            ),
+              child: Container(
+                color: Colors.black.withOpacity(0.8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+                          child: Text(
+                            'Hello, $profile',
+                            style: GoogleFonts.openSans(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold)),
                           ),
-                          SizedBox(
-                            height: 4,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
-                            child: Text(
-                              "Home",
-                              style: GoogleFonts.openSans(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600)),
-                            ),
-                          ),
-                        ],
-                      ),
-                      IconButton(
-                        color: Colors.black,
-                        alignment: Alignment.topCenter,
-                        icon: Image.asset(
-                          "assets/images/notification.png",
-                          width: 24,
                         ),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
+                          child: Text(
+                            "Home",
+                            style: GoogleFonts.openSans(
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                        ),
+                      ],
+                    ),
+                    IconButton(
+                      color: Colors.black,
+                      alignment: Alignment.topCenter,
+                      icon: Image.asset(
+                        "assets/images/notification.png",
+                        width: 24,
+                      ),
+                      onPressed: () {},
+                    )
+                  ],
                 ),
               ),
             ),

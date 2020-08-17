@@ -4,6 +4,7 @@ import 'package:lpi_app/Screens/AllMembers/body.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
 import 'package:lpi_app/Screens/Scan/scanbody.dart';
 import 'package:lpi_app/Screens/TabView/body.dart';
+import 'package:lpi_app/Screens/TabView/listwithtab.dart';
 import 'package:lpi_app/Screens/UserRegistration/userReg_screen.dart';
 
 class GridDashboard extends StatelessWidget {
@@ -51,59 +52,56 @@ class GridDashboard extends StatelessWidget {
     List<Items> myList = [item1, item2, item3, item4, item5, item6];
     var color = 0xff453658;
     return Flexible(
-      child: Opacity(
-        opacity: 0.9,
-              child: GridView.count(
+      child: GridView.count(
             childAspectRatio: 1.0,
             padding: EdgeInsets.only(left: 16, right: 16),
             crossAxisCount: 2,
             crossAxisSpacing: 18,
             mainAxisSpacing: 18,
             children: myList.map((data) {
-              return Container(
-                decoration: BoxDecoration(
-                    color: Colors.black, borderRadius: BorderRadius.circular(10)),
-                child: InkResponse(
-                  onTap: () {
-                    _onTileClicked(myList.indexOf(data));
+      return Container(
+        decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.8), borderRadius: BorderRadius.circular(10)),
+        child: InkResponse(
+          onTap: () {
+            _onTileClicked(myList.indexOf(data));
 
-                    if (myList.indexOf(data) == 0) {
-                      Navigator.pushNamed(context, ScanScreen.id);
-                    }
-                    if (myList.indexOf(data) == 1) {
-                      Navigator.pushNamed(context, TabViewScreen.id);
-                    }
-                    if (myList.indexOf(data) == 3) {
-                      Navigator.pushNamed(context, ListViewScreen.id);
-                    }
-                    if (myList.indexOf(data) == 2) {
-                      Navigator.pushNamed(context, RegisterScreen.id);
-                    }
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset(
-                        data.img,
-                        width: 42,
-                      ),
-                      SizedBox(
-                        height: 14,
-                      ),
-                      Text(
-                        data.title,
-                        style: GoogleFonts.openSans(
-                            textStyle: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600)),
-                      ),
-                    ],
-                  ),
-                ),
-              );
+            if (myList.indexOf(data) == 0) {
+              Navigator.pushNamed(context, ScanScreen.id);
+            }
+            if (myList.indexOf(data) == 1) {
+              Navigator.pushNamed(context, ListWithTabScreen.id);
+            }
+            if (myList.indexOf(data) == 3) {
+              Navigator.pushNamed(context, ListViewScreen.id);
+            }
+            if (myList.indexOf(data) == 2) {
+              Navigator.pushNamed(context, RegisterScreen.id);
+            }
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                data.img,
+                width: 42,
+              ),
+              SizedBox(
+                height: 14,
+              ),
+              Text(
+                data.title,
+                style: GoogleFonts.openSans(
+                    textStyle: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600)),
+              ),
+            ],
+          ),
+        ),
+      );
             }).toList()),
-      ),
     );
   }
 }

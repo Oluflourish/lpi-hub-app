@@ -29,6 +29,31 @@ class _TabViewScreenState extends State<TabViewScreen> {
           ),
           
         ),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Container(
+decoration: new BoxDecoration(color: Theme.of(context).primaryColor),
+  child: new TabBar(
+    
+    tabs: [
+      new Tab(
+          icon: const Icon(Icons.home),
+          text: 'Address',
+      ),
+      new Tab(
+          icon: const Icon(Icons.my_location),
+          text: 'Location',
+      ),
+       new Tab(
+          icon: const Icon(Icons.my_location),
+          text: 'Location',
+      ),
+    ],
+  ),
+
+
+          ),
+        ),
       ),
     );
   }

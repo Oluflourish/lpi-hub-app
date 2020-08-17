@@ -10,6 +10,8 @@ import 'package:lpi_app/Screens/Welcome/welcome_screen.dart';
 import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/Screens/Dashboard/dashboard_screen.dart';
 
+import 'Screens/TabView/listwithtab.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
       ),
-      initialRoute: WelcomeScreen.id ,
+      initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
@@ -32,8 +34,8 @@ class MyApp extends StatelessWidget {
         RegisterScreen.id: (context) => RegisterScreen(),
         ScanScreen.id: (context) => ScanScreen(),
         ListViewScreen.id: (context) => ListViewScreen(),
-        TabViewScreen.id: (context) => TabViewScreen()
-        
+        TabViewScreen.id: (context) => TabViewScreen(),
+        ListWithTabScreen.id: (context) => ListWithTabScreen()
       },
     );
   }

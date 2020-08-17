@@ -23,7 +23,6 @@ class _ListViewScreenState extends State<ListViewScreen> {
         ),
       ),
       body: ListPage(),
-      
     );
   }
 }
@@ -76,17 +75,23 @@ class _ListPageState extends State<ListPage> {
           future: _data,
           builder: (_, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: Text("Loading ..."));
+              return Center(
+                child: Text(
+                  "Loading ...",
+                  style: TextStyle(color: Colors.white),
+                ),
+              );
             } else {
               return new ListView.separated(
                   separatorBuilder: (context, index) => Divider(
-                        color: Colors.black,
+                        color: Colors.white,
                         thickness: 0.2,
                       ),
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
                     return ListTile(
                       leading: ClipOval(
+                        
                         child:
                             (snapshot.data[index].data["downloadUrl"] != null)
                                 ? Image.network(
@@ -99,9 +104,15 @@ class _ListPageState extends State<ListPage> {
                                   ),
                       ),
                       title: Text(
-                          snapshot.data[index].data["firstname"].toString()),
-                      subtitle:
-                          Text(snapshot.data[index].data["surname"].toString()),
+                        snapshot.data[index].data["firstname"].toString() +
+                            ' ' +
+                            snapshot.data[index].data["surname"].toString(),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        snapshot.data[index].data["email"].toString(),
+                        style: TextStyle(color: Colors.white),
+                      ),
                       onTap: () => navigateToDetail(snapshot.data[index]),
                     );
                   });
@@ -110,4 +121,3 @@ class _ListPageState extends State<ListPage> {
     );
   }
 }
-
