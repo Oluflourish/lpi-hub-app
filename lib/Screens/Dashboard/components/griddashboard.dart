@@ -73,7 +73,7 @@ class GridDashboard extends StatelessWidget {
               Navigator.pushNamed(context, ListWithTabScreen.id);
             }
             if (myList.indexOf(data) == 3) {
-              Navigator.pushNamed(context, ListViewScreen.id);
+              Navigator.pushNamed(context, ListWithTabScreen.id);
             }
             if (myList.indexOf(data) == 2) {
               Navigator.pushNamed(context, RegisterScreen.id);

@@ -176,11 +176,227 @@ class _DetailPageState extends State<DetailPage> {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 10, horizontal: 5),
                                 child: Container(
-                                  color: Colors.black.withOpacity(0.8),
+                                  color: Colors.black.withOpacity(0.1),
                                   height: 370,
                                   child: TabBarView(
                                     children: [
-                                      Icon(Icons.movie),
+                                      SingleChildScrollView(
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                              color:
+                                                  Colors.black.withOpacity(0.8),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Firstname',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Surname',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ))
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          'Email',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Phone',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Gender',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ))
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          'Membership Type',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Container(
+                                              color:
+                                                  Colors.black.withOpacity(0.8),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Firstname',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Surname',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ))
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          'Email',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Phone',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Gender',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ))
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          'Membership Type',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 50,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                       Icon(Icons.games),
                                     ],
                                   ),

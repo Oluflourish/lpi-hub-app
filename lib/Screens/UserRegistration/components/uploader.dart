@@ -127,7 +127,8 @@ class _UploaderState extends State<Uploader> {
                   'accountLevel': widget.membershipType,
                   'profilepic': imageCloudPath,
                   'downloadUrl': _downlaodUrl,
-                  'isloggedIn': false
+                  'isloggedIn': false,
+                  
                 });
                 print('The Image path we seek is ---->  $imageCloudPath');
                 Navigator.pushNamed(context, DashboardScreen.id);

@@ -56,42 +56,25 @@ class _ScanState extends State<ScanScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: RaisedButton(
-                    color: kPrimaryColor,
-                    textColor: Colors.black,
-                    splashColor: Colors.blueGrey,
-                    onPressed: scan,
-                    child: const Text('START CAMERA SCAN')),
+                  color: kPrimaryColor,
+                  textColor: Colors.black,
+                  splashColor: Colors.blueGrey,
+                  onPressed: scan,
+                  child: const Text('START CAMERA SCAN'),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: RaisedButton(
-                    color: kPrimaryColor,
-                    textColor: Colors.black,
-                    splashColor: Colors.blueGrey,
-                    onPressed: () async {
-                      
-
-                      // var firebaseUser =
-                      //     await FirebaseAuth.instance.currentUser();
-                      // _firestore
-                      //     .collection("members")
-                      //     .document("ebun032555@gmail.com")
-                      //     .get()
-                      //     .then((value) {
-                      //   print(value.data);
-                      // });
-                      var firebaseUser =
-                          await FirebaseAuth.instance.currentUser();
-                      print('I just tapped ${firebaseUser.uid}');
-                      _firestore
-                          .collection("members")
-                          .document(firebaseUser.uid)
-                          .get()
-                          .then((value) {
-                        print(value.data);
-                      });
-                    },
-                    child: const Text('FIREBASE GETTER')),
+                  color: kPrimaryColor,
+                  textColor: Colors.black,
+                  splashColor: Colors.blueGrey,
+                  onPressed: () async {
+                    print('Method invocation happens here first then --->');
+                    getDocs();
+                  },
+                  child: const Text('FIREBASE GETTER'),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -135,23 +118,22 @@ class _ScanState extends State<ScanScreen> {
 }
 
 void _toggleStatus() async {
-  try {
-    _firestore
-        .collection("members")
-        .where("email", isEqualTo: "ebun032555@gmail.com")
-        .getDocuments()
-        .then((value) {
-      value.documents.forEach((result) {
-        print(result.data);
-      });
-    });
-  } catch (e) {
-    print("Error caught: ${e.toString()}");
-  }
+  int a = 0;
+  if (a == 0) {}
 }
 
-Future getMembers() async {
-  var firestore = Firestore.instance;
-  QuerySnapshot qn = await firestore.collection('members').getDocuments();
-  return qn.documents;
+Future getDocs() async {
+  QuerySnapshot querySnapshot =
+      await Firestore.instance.collection("members").getDocuments();
+
+  for (int i = 0; i < querySnapshot.documents.length; i++) {
+    var a = querySnapshot.documents[i];
+
+    var snapshot = await Firestore.instance
+        .collection('members')
+        .document(a.documentID)
+        .get();
+
+    print(snapshot.data['email']);
+  }
 }

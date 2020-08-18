@@ -39,6 +39,7 @@ class _ListPageState extends State<ListPage> {
 
   Future getMembers() async {
     var firestore = Firestore.instance;
+    //we get all member documents here 
     QuerySnapshot qn = await firestore.collection('members').getDocuments();
     return qn.documents;
   }
@@ -55,6 +56,7 @@ class _ListPageState extends State<ListPage> {
   @override
   void initState() {
     super.initState();
+    //data is set here from the return in method
     _data = getMembers();
   }
 
