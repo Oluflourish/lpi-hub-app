@@ -26,9 +26,12 @@ class Body extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: kPrimaryColor),
             ),
             SizedBox(height: size.height * 0),
-            Image.asset(
-              "assets/images/hands_up.jpg",
-              height: size.height * 0.45,
+            ColorFiltered(
+                          child: Image.asset(
+                "assets/images/hands_up.jpg",
+                height: size.height * 0.45,
+              ),
+              colorFilter: ColorFilter.mode(kPrimaryColor, BlendMode.darken),
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(

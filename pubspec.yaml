@@ -41,9 +41,10 @@ dependencies:
   firebase_storage: ^3.1.6
   path_provider: ^1.6.1
   google_sign_in: 
-  image_picker_saver:
   http:
+  shared_preferences:
   esys_flutter_share:
+  
   
     
   

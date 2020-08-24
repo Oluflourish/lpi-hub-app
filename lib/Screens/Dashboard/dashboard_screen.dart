@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lpi_app/Screens/Welcome/welcome_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'components/griddashboard.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -15,10 +17,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
   FirebaseUser loggedInUser;
   String profile;
 
+  SharedPreferences logindata;
+  String username;
+
   @override
   void initState() {
     super.initState();
     getCurrentUser();
+    initial();
+  }
+
+  void initial() async {
+    logindata = await SharedPreferences.getInstance();
+    setState(() {
+      username = logindata.getString('username');
+    });
   }
 
   void getCurrentUser() async {
@@ -72,7 +85,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           image: AssetImage('assets/images/data_model.jpg'),
           fit: BoxFit.fill,
         ),
-        
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -175,7 +187,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         "assets/images/notification.png",
                         width: 24,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        logindata.setBool('login', true);
+                        Navigator.pushReplacement(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => WelcomeScreen()));
+                      },
                     )
                   ],
                 ),

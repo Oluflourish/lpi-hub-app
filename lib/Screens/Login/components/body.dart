@@ -11,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lpi_app/functions/utility.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -26,13 +27,32 @@ class _BodyState extends State<Body> {
   String email;
   String password;
   bool showSpinner = false;
+  SharedPreferences logindata;
+  bool newuser;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    check_if_already_login();
+  }
+
+  void check_if_already_login() async {
+    logindata = await SharedPreferences.getInstance();
+    newuser = (logindata.getBool('login') ?? true);
+    print(newuser);
+    if (newuser == false) {
+      Navigator.pushReplacement(
+          context, new MaterialPageRoute(builder: (context) => DashboardScreen()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return ModalProgressHUD(
       inAsyncCall: showSpinner,
-          child: Background(
+      child: Background(
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -68,14 +88,17 @@ class _BodyState extends State<Body> {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email, password: password);
                     if (user != null) {
+                      logindata.setBool('login', false);
+                      logindata.setString('username', email);
                       Navigator.popAndPushNamed(context, DashboardScreen.id);
                     }
                   } catch (e) {
                     setState(() {
-                    showSpinner = false;
-                  });
-                   
-                    Utility.getInstance().showAlertDialog(context, 'Login Error', e.toString());
+                      showSpinner = false;
+                    });
+
+                    Utility.getInstance()
+                        .showAlertDialog(context, 'Login Error', e.toString());
                   }
                 },
               ),

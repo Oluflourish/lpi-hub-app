@@ -68,13 +68,11 @@ class _DetailPageState extends State<DetailPage> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) => GenerateScreen(
-                                          timestamp: widget
-                                              .member.data['createdAt']
-                                              .toString(),
+                                          timestamp: widget.member.data['createdAt'].toString(),
                                         ),
                                       ),
                                     );
-                                    print('tapp tapp...............');
+                                    print(' tapp tapp...............');
                                   },
                                   child: Image.network(
                                       'https://cdn0.iconfinder.com/data/icons/material-style/48/qrcode-512.png'),
@@ -93,7 +91,15 @@ class _DetailPageState extends State<DetailPage> {
                               child: IconButton(
                                 icon: Icon(Icons.edit),
                                 onPressed: () {
-                                  print('tapp tapp...............');
+                                  print('${widget.member.data['createdAt'].toString()} tapp tapp...............');
+                                   Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => GenerateScreen(
+                                          timestamp: 'I am the stamp'
+                                        ),
+                                      ),
+                                    );
                                 },
                                 color: Colors.black,
                               ),

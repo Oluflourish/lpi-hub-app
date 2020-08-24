@@ -1,3 +1,4 @@
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter/services.dart';
@@ -35,7 +36,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share),
-            onPressed: _captureAndSharePng,
+            onPressed: _shareImage,
           ),
         ],
       ),
@@ -43,27 +44,23 @@ class _GenerateScreenState extends State<GenerateScreen> {
     );
   }
 
-  Future<void> _captureAndSharePng() async {
+  Future<void> _shareImage() async {
     try {
       RenderRepaintBoundary boundary =
           globalKey.currentContext.findRenderObject();
       var image = await boundary.toImage();
       ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List pngBytes = byteData.buffer.asUint8List();
-
-      final tempDir = await getTemporaryDirectory();
-      final file = await new File('${tempDir.path}/image.png').create();
-      await file.writeAsBytes(pngBytes);
-
-      final channel = const MethodChannel('channel:me.alfian.share/share');
-      channel.invokeMethod('shareFile', 'image.png');
+      await Share.file('esys image', 'esys.png', pngBytes, 'image/png',
+          text: 'My optional text.');
     } catch (e) {
-      print(e.toString());
+      print('error: $e');
     }
   }
 
   _contentWidget() {
     setState(() {
+//TODO: change data to userid
       _dataString = widget.timestamp;
     });
     final bodyHeight = MediaQuery.of(context).size.height -
@@ -79,6 +76,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
                 child: QrImage(
                   data: _dataString,
                   size: 0.5 * bodyHeight,
+                  backgroundColor: Colors.white,
                   // onError: (ex) {
                   //   print("[QR] ERROR - $ex");
                   //   setState((){
