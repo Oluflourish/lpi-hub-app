@@ -21,6 +21,7 @@ class ScanScreen extends StatefulWidget {
 
 class _ScanState extends State<ScanScreen> {
   String barcode = "";
+  dynamic data;
 
   final _auth = FirebaseAuth.instance;
 
@@ -42,6 +43,67 @@ class _ScanState extends State<ScanScreen> {
     getCurrentUser();
   }
 
+  getDoc() async {
+    print(barcode);
+    await scan();
+    Firestore.instance
+        .collection('members')
+        .where("userid", isEqualTo: barcode)
+        .limit(1)
+        .getDocuments()
+        .then(
+      (value) async {
+        if (value.documents.length > 0) {
+          for (int i = 0; i < value.documents.length; i++) {
+            var a = value.documents[i];
+
+            var snapshot = await Firestore.instance
+                .collection('members')
+                .document(a.documentID)
+                .get();
+
+            print(snapshot.data['email']);
+            print(snapshot.data['userid']);
+            print(snapshot.data['isloggedIn']);
+            status = snapshot.data['isloggedIn'];
+            print(status);
+            Timestamp time = Timestamp.now();
+            if (status == false) {
+              print('Inside if condition');
+              status = true;
+
+              _firestore.collection('activity').add({
+                'actionTime': time,
+                'member': snapshot.data['email'],
+                'status': status,
+                'activity': 'Signed In'
+              });
+              _firestore
+                  .collection('members')
+                  .document(a.documentID)
+                  .updateData({'isloggedIn': status, 'lastAction': time});
+            } else if (status == true) {
+              print('Inside else if condition');
+              status = false;
+              _firestore.collection('activity').add({
+                'actionTime': Timestamp.now(),
+                'member': snapshot.data['email'],
+                'status': status,
+                'activity': 'Signed Out'
+              });
+              _firestore
+                  .collection('members')
+                  .document(a.documentID)
+                  .updateData({'isloggedIn': status, 'lastAction': time});
+            }
+          }
+        } else {
+          return null;
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,21 +121,8 @@ class _ScanState extends State<ScanScreen> {
                   color: kPrimaryColor,
                   textColor: Colors.black,
                   splashColor: Colors.blueGrey,
-                  onPressed: scan,
+                  onPressed: getDoc,
                   child: const Text('START CAMERA SCAN'),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: RaisedButton(
-                  color: kPrimaryColor,
-                  textColor: Colors.black,
-                  splashColor: Colors.blueGrey,
-                  onPressed: () async {
-                    print('Method invocation happens here first then --->');
-                    getDocs();
-                  },
-                  child: const Text('FIREBASE GETTER'),
                 ),
               ),
               Padding(
@@ -88,16 +137,14 @@ class _ScanState extends State<ScanScreen> {
         ));
   }
 
-  Future scan() async {
+  Future<String> scan() async {
     try {
       //String barcode = (await BarcodeScanner.scan()) as String;
 
       var test = await BarcodeScanner.scan();
       var mytst = test.rawContent;
       barcode = mytst;
-
       //call method that updates the  DB here
-
       debugPrint('This is the barcode feedback $barcode');
       setState(() => this.barcode = barcode);
     } on PlatformException catch (e) {
@@ -114,13 +161,7 @@ class _ScanState extends State<ScanScreen> {
     } catch (e) {
       setState(() => this.barcode = 'Unknown error: $e');
     }
-
-    return barcode;
   }
-}
-
-void _toggleStatus() async {
-  
 }
 
 Future getDocs() async {
@@ -138,3 +179,4 @@ Future getDocs() async {
     print(snapshot.data['email']);
   }
 }
+//3B9U1Yz7fINZvO1FYT6d
