@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lpi_app/Screens/TabView/listwithtab.dart';
 import 'package:lpi_app/Screens/Welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'components/griddashboard.dart';
@@ -51,27 +52,27 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Items2 item1 = new Items2(
-      title: "SCAN QR CODE",
-      subtitle: "March, Wednesday",
+      title: "MEMBERS",
+      subtitle: "32",
       event: "3 Events",
       img: "assets/images/qr-code.png",
       color: Colors.green[400]);
 
   Items2 item2 = new Items2(
-      title: "ACTIVITY LOG",
-      subtitle: "Bocali, Apple",
+      title: "LOGGED IN",
+      subtitle: "1",
       event: "4 Items",
       img: "assets/images/seo-report.png",
       color: Colors.purple[400]);
   Items2 item3 = new Items2(
-      title: "NEW MEMBER",
-      subtitle: "Lucy Mao going to Office",
+      title: "ADMINS",
+      subtitle: "4",
       event: "",
       img: "assets/images/new.png",
       color: Colors.blue[400]);
   Items2 item4 = new Items2(
-      title: "MEMBERS",
-      subtitle: "Rose favirited your Post",
+      title: "SUBSCRIBED",
+      subtitle: "3",
       event: "",
       img: "assets/images/employee.png",
       color: Colors.pink[400]);
@@ -110,29 +111,69 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     children: myList.map((data) {
-                      return Container(
-                        decoration: BoxDecoration(
-                            color: data.color,
-                            borderRadius: BorderRadius.circular(1)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Image.asset(''
-                                // data.img,
-                                // width: 42,
-                                ),
-                            SizedBox(
-                              height: 14,
-                            ),
-                            Text(
-                              ' ',
-                              style: GoogleFonts.openSans(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600)),
-                            ),
-                          ],
+                      return InkResponse(
+                        onTap: () {
+                          if (myList.indexOf(data) == 0) {
+                            Navigator.pushNamed(context, ListWithTabScreen.id);
+                          }
+                          if (myList.indexOf(data) == 1) {
+                            Navigator.pushNamed(context, ListWithTabScreen.id);
+                          }
+                          if (myList.indexOf(data) == 2) {
+                            Navigator.pushNamed(context, ListWithTabScreen.id);
+                          }
+                          if (myList.indexOf(data) == 3) {
+                            Navigator.pushNamed(context, ListWithTabScreen.id);
+                          }
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: data.color,
+                              borderRadius: BorderRadius.circular(1)),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    color: Colors.black.withOpacity(0.5),
+                                    width: 50,
+                                    height: 54.5,
+                                    child: Flexible(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset(data.img),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text(
+                                          data.subtitle,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(
+                                          data.title,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       );
                     }).toList(),

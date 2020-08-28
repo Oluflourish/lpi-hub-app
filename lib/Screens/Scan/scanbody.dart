@@ -114,12 +114,13 @@ class _ScanState extends State<ScanScreen> {
     } catch (e) {
       setState(() => this.barcode = 'Unknown error: $e');
     }
+
+    return barcode;
   }
 }
 
 void _toggleStatus() async {
-  int a = 0;
-  if (a == 0) {}
+  
 }
 
 Future getDocs() async {

@@ -1,6 +1,12 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
+import 'package:lpi_app/components/rectangle_input_field.dart';
+import 'package:lpi_app/components/rounded_button.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../constants.dart';
 
@@ -63,20 +69,23 @@ class _DetailPageState extends State<DetailPage> {
                                 backgroundColor: kPrimaryColor,
                                 radius: 25.0,
                                 child: InkResponse(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => GenerateScreen(
-                                          timestamp: widget.member.data['createdAt'].toString(),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => GenerateScreen(
+                                            timestamp: widget
+                                                .member.data['userid']
+                                                .toString(),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                    print(' tapp tapp...............');
-                                  },
-                                  child: Image.network(
-                                      'https://cdn0.iconfinder.com/data/icons/material-style/48/qrcode-512.png'),
-                                ),
+                                      );
+                                      print(' tapp tapp...............');
+                                    },
+                                    child: Icon(
+                                      Icons.crop_free,
+                                      color: Colors.black,
+                                    )),
                               )
                             ],
                           )),
@@ -90,17 +99,7 @@ class _DetailPageState extends State<DetailPage> {
                               radius: 25.0,
                               child: IconButton(
                                 icon: Icon(Icons.edit),
-                                onPressed: () {
-                                  print('${widget.member.data['createdAt'].toString()} tapp tapp...............');
-                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => GenerateScreen(
-                                          timestamp: 'I am the stamp'
-                                        ),
-                                      ),
-                                    );
-                                },
+                                onPressed: () {},
                                 color: Colors.black,
                               ),
                             )
@@ -403,7 +402,180 @@ class _DetailPageState extends State<DetailPage> {
                                           ],
                                         ),
                                       ),
-                                      Icon(Icons.games),
+                                      Column(
+                                        children: <Widget>[
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Container(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
+                                                  child:
+                                                      CircularPercentIndicator(
+                                                    radius: 150.0,
+                                                    lineWidth: 13.0,
+                                                    animation: true,
+                                                    percent: 0.7,
+                                                    circularStrokeCap:
+                                                        CircularStrokeCap.round,
+                                                    progressColor:
+                                                        Colors.redAccent,
+                                                    center: new Text(
+                                                      "70.0%",
+                                                      style: new TextStyle(
+                                                          color: kPrimaryColor,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 15,
+                                                height: 15,
+                                              ),
+                                              Column(
+                                                children: <Widget>[
+                                                  Container(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10.0),
+                                                      child: Column(
+                                                        children: <Widget>[
+                                                          Container(
+                                                            child: Column(
+                                                              children: <
+                                                                  Widget>[
+                                                                Align(
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .topRight,
+                                                                  child: Text(
+                                                                    'data',
+                                                                    style: TextStyle(
+                                                                        color:
+                                                                            kPrimaryColor),
+                                                                  ),
+                                                                ),
+                                                                Text('data'),
+                                                                Text('data'),
+                                                                LinearPercentIndicator(
+                                                                  width: 140.0,
+                                                                  lineHeight:
+                                                                      14.0,
+                                                                  percent: 0.5,
+                                                                  center: Text(
+                                                                    "50.0%",
+                                                                    style: new TextStyle(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            12.0),
+                                                                  ),
+                                                                  linearStrokeCap:
+                                                                      LinearStrokeCap
+                                                                          .roundAll,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .grey,
+                                                                  progressColor:
+                                                                      kPrimaryLightColor,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 18.7,
+                                                  ),
+                                                  Container(
+                                                    color: Colors.black
+                                                        .withOpacity(0.5),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10.0),
+                                                      child: Column(
+                                                        children: <Widget>[
+                                                          Align(
+                                                            alignment: Alignment
+                                                                .topRight,
+                                                            child: Text(
+                                                              'data',
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      kPrimaryColor),
+                                                            ),
+                                                          ),
+                                                          Text('data'),
+                                                          Text('data'),
+                                                          LinearPercentIndicator(
+                                                            width: 140.0,
+                                                            lineHeight: 14.0,
+                                                            percent: 0.5,
+                                                            center: Text(
+                                                              "50.0%",
+                                                              style: new TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      12.0),
+                                                            ),
+                                                            linearStrokeCap:
+                                                                LinearStrokeCap
+                                                                    .roundAll,
+                                                            backgroundColor:
+                                                                Colors.grey,
+                                                            progressColor:
+                                                                kPrimaryColor,
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Container(
+                                            color:
+                                                Colors.black.withOpacity(0.5),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Column(
+                                                children: <Widget>[
+                                                  RoundedButton(
+                                                    text: 'ADJUST HOURLY USAGE',
+                                                    press: () {},
+                                                  ),
+                                                  RoundedButton(
+                                                    text:
+                                                        'ADJUST MONTHLY USAGE',
+                                                    press: () {},
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),

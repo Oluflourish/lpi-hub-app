@@ -51,8 +51,9 @@ class _GenerateScreenState extends State<GenerateScreen> {
       var image = await boundary.toImage();
       ByteData byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List pngBytes = byteData.buffer.asUint8List();
-      await Share.file('esys image', 'esys.png', pngBytes, 'image/png',
-          text: 'My optional text.');
+      await Share.file(
+          'LPI-HUB Qr Image Share', 'esys.png', pngBytes, 'image/png',
+          text: 'User Unique Barcode');
     } catch (e) {
       print('error: $e');
     }

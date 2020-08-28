@@ -44,6 +44,7 @@ dependencies:
   http:
   shared_preferences:
   esys_flutter_share:
+  percent_indicator: "^2.1.5"
   
   
     
