@@ -25,7 +25,9 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          widget.member.data["surname"].toString(),
+          widget.member.data["firstname"].toString() +
+              ' ' +
+              widget.member.data["surname"].toString(),
         ),
       ),
       body: Column(
@@ -66,6 +68,7 @@ class _DetailPageState extends State<DetailPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               new CircleAvatar(
+                                
                                 backgroundColor: kPrimaryColor,
                                 radius: 25.0,
                                 child: InkResponse(
@@ -220,8 +223,36 @@ class _DetailPageState extends State<DetailPage> {
                                                         ))
                                                       ],
                                                     ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          widget.member
+                                                              .data["surname"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          widget.member
+                                                              .data["firstname"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                        ))
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
                                                     ),
                                                     Row(
                                                       mainAxisAlignment:
@@ -239,8 +270,26 @@ class _DetailPageState extends State<DetailPage> {
                                                         ),
                                                       ],
                                                     ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          widget.member
+                                                              .data["email"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
                                                     ),
                                                     Row(
                                                       mainAxisAlignment:
@@ -266,8 +315,38 @@ class _DetailPageState extends State<DetailPage> {
                                                         ))
                                                       ],
                                                     ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                          child: Text(
+                                                            widget.member
+                                                                .data["phone"]
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            widget.member
+                                                                .data["gender"]
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
                                                     ),
                                                     Row(
                                                       mainAxisAlignment:
@@ -285,8 +364,28 @@ class _DetailPageState extends State<DetailPage> {
                                                         ),
                                                       ],
                                                     ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(
+                                                          widget
+                                                              .member
+                                                              .data[
+                                                                  "accountLevel"]
+                                                              .toString(),
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white),
+                                                        ),
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
                                                     ),
                                                   ],
                                                 ),
@@ -313,22 +412,47 @@ class _DetailPageState extends State<DetailPage> {
                                                       children: <Widget>[
                                                         Expanded(
                                                             child: Text(
-                                                          'Firstname',
+                                                          'Account Created',
                                                           style: TextStyle(
                                                               color:
                                                                   kPrimaryColor),
                                                         )),
                                                         Expanded(
                                                             child: Text(
-                                                          'Surname',
+                                                          'Aug 2, 2020',
+                                                          textAlign:
+                                                              TextAlign.end,
                                                           style: TextStyle(
                                                               color:
                                                                   kPrimaryColor),
                                                         ))
                                                       ],
                                                     ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                          child: Text(
+                                                            widget
+                                                                .member
+                                                                .data[
+                                                                    "createdAt"]
+                                                                .toDate()
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
                                                     ),
                                                     Row(
                                                       mainAxisAlignment:
@@ -339,42 +463,12 @@ class _DetailPageState extends State<DetailPage> {
                                                               .start,
                                                       children: <Widget>[
                                                         Text(
-                                                          'Email',
+                                                          'Last login',
                                                           style: TextStyle(
                                                               color:
                                                                   kPrimaryColor),
                                                         ),
                                                       ],
-                                                    ),
-                                                    SizedBox(
-                                                      height: 50,
-                                                    ),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Expanded(
-                                                            child: Text(
-                                                          'Phone',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
-                                                        )),
-                                                        Expanded(
-                                                            child: Text(
-                                                          'Gender',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
-                                                        ))
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                      height: 50,
                                                     ),
                                                     Row(
                                                       mainAxisAlignment:
@@ -385,20 +479,73 @@ class _DetailPageState extends State<DetailPage> {
                                                               .start,
                                                       children: <Widget>[
                                                         Text(
-                                                          'Membership Type',
+                                                          widget.member
+                                                              .data["createdAt"]
+                                                              .toDate()
+                                                              .toString(),
                                                           style: TextStyle(
                                                               color:
-                                                                  kPrimaryColor),
+                                                                  Colors.white),
                                                         ),
                                                       ],
                                                     ),
                                                     SizedBox(
-                                                      height: 50,
+                                                      height: 20,
+                                                    ),
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Last seen',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        )),
+                                                        Expanded(
+                                                            child: Text(
+                                                          'Hub Presence',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  kPrimaryColor),
+                                                        ))
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                      height: 20,
                                                     ),
                                                   ],
                                                 ),
                                               ),
-                                            )
+                                            ),
+                                            SizedBox(
+                                              height: 20,
+                                            ),
+                                            Container(
+                                              color:
+                                                  Colors.black.withOpacity(0.8),
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  children: <Widget>[
+                                                    RoundedButton(
+                                                      text: 'DEACTIVATE MEMBER',
+                                                      press: () {},
+                                                    ),
+                                                    RoundedButton(
+                                                      text: 'LOG MEMBER OUT',
+                                                      press: () {},
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lpi_app/Screens/Activity/activity.dart';
 import 'package:lpi_app/Screens/AllMembers/body.dart';
 import 'package:lpi_app/Screens/Login/login_screen.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         ScanScreen.id: (context) => ScanScreen(),
         ListViewScreen.id: (context) => ListViewScreen(),
         TabViewScreen.id: (context) => TabViewScreen(),
-        ListWithTabScreen.id: (context) => ListWithTabScreen()
+        ListWithTabScreen.id: (context) => ListWithTabScreen(),
+        ActivityScreen.id: (context) => ActivityScreen()
       },
     );
   }

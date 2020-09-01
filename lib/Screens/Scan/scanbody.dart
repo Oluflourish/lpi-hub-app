@@ -22,6 +22,7 @@ class ScanScreen extends StatefulWidget {
 class _ScanState extends State<ScanScreen> {
   String barcode = "";
   dynamic data;
+  String log;
 
   final _auth = FirebaseAuth.instance;
 
@@ -72,6 +73,10 @@ class _ScanState extends State<ScanScreen> {
               print('Inside if condition');
               status = true;
 
+              setState(() {
+                log = 'signed in';
+              });
+
               _firestore.collection('activity').add({
                 'actionTime': time,
                 'member': snapshot.data['email'],
@@ -85,6 +90,10 @@ class _ScanState extends State<ScanScreen> {
             } else if (status == true) {
               print('Inside else if condition');
               status = false;
+              setState(() {
+                log = 'signed out';
+              });
+
               _firestore.collection('activity').add({
                 'actionTime': Timestamp.now(),
                 'member': snapshot.data['email'],
@@ -123,6 +132,13 @@ class _ScanState extends State<ScanScreen> {
                   splashColor: Colors.blueGrey,
                   onPressed: getDoc,
                   child: const Text('START CAMERA SCAN'),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                child: Text(
+                  'User $log',
+                  textAlign: TextAlign.center,
                 ),
               ),
               Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lpi_app/Screens/Activity/activity.dart';
 import 'package:lpi_app/Screens/AllMembers/body.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
 import 'package:lpi_app/Screens/Scan/scanbody.dart';
@@ -53,55 +54,56 @@ class GridDashboard extends StatelessWidget {
     var color = 0xff453658;
     return Flexible(
       child: GridView.count(
-            childAspectRatio: 1.0,
-            padding: EdgeInsets.only(left: 16, right: 16),
-            crossAxisCount: 2,
-            crossAxisSpacing: 18,
-            mainAxisSpacing: 18,
-            children: myList.map((data) {
-      return Container(
-        decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.8), borderRadius: BorderRadius.circular(10)),
-        child: InkResponse(
-          onTap: () {
-            _onTileClicked(myList.indexOf(data));
+          childAspectRatio: 1.0,
+          padding: EdgeInsets.only(left: 16, right: 16),
+          crossAxisCount: 2,
+          crossAxisSpacing: 18,
+          mainAxisSpacing: 18,
+          children: myList.map((data) {
+            return Container(
+              decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(10)),
+              child: InkResponse(
+                onTap: () {
+                  _onTileClicked(myList.indexOf(data));
 
-            if (myList.indexOf(data) == 0) {
-              Navigator.pushNamed(context, ScanScreen.id);
-            }
-            if (myList.indexOf(data) == 1) {
-              Navigator.pushNamed(context, ListWithTabScreen.id);
-            }
-            if (myList.indexOf(data) == 3) {
-              Navigator.pushNamed(context, ListWithTabScreen.id);
-            }
-            if (myList.indexOf(data) == 2) {
-              Navigator.pushNamed(context, RegisterScreen.id);
-            }
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset(
-                data.img,
-                width: 42,
+                  if (myList.indexOf(data) == 0) {
+                    Navigator.pushNamed(context, ScanScreen.id);
+                  }
+                  if (myList.indexOf(data) == 1) {
+                    Navigator.pushNamed(context, ActivityScreen.id);
+                  }
+                  if (myList.indexOf(data) == 3) {
+                    Navigator.pushNamed(context, ListWithTabScreen.id);
+                  }
+                  if (myList.indexOf(data) == 2) {
+                    Navigator.pushNamed(context, RegisterScreen.id);
+                  }
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      data.img,
+                      width: 42,
+                    ),
+                    SizedBox(
+                      height: 14,
+                    ),
+                    Text(
+                      data.title,
+                      style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(
-                height: 14,
-              ),
-              Text(
-                data.title,
-                style: GoogleFonts.openSans(
-                    textStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600)),
-              ),
-            ],
-          ),
-        ),
-      );
-            }).toList()),
+            );
+          }).toList()),
     );
   }
 }
