@@ -32,10 +32,12 @@ class _DetailPageState extends State<DetailPage> {
       ),
       body: Column(
         children: <Widget>[
+          //Image continer
           Container(
-            height: 230,
+            height: (size.height / 5) + 80,
             decoration: BoxDecoration(
               image: DecorationImage(
+                colorFilter: ColorFilter.mode(kPrimaryColor, BlendMode.darken),
                 image: AssetImage('assets/images/hands_up.jpg'),
                 fit: BoxFit.fill,
               ),
@@ -52,12 +54,21 @@ class _DetailPageState extends State<DetailPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          ClipOval(
-                            child: SizedBox(
-                              width: 200,
-                              height: 200,
-                              child: Image.network(
-                                  widget.member.data['downloadUrl'].toString()),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(100)),
+                            child: ClipOval(
+                              child: SizedBox(
+                                width: 200,
+                                height: 200,
+                                child: Image.network(widget
+                                    .member.data['downloadUrl']
+                                    .toString()),
+                              ),
                             ),
                           ),
                         ],
@@ -68,7 +79,6 @@ class _DetailPageState extends State<DetailPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               new CircleAvatar(
-                                
                                 backgroundColor: kPrimaryColor,
                                 radius: 25.0,
                                 child: InkResponse(
@@ -115,11 +125,12 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
           ),
+
           Container(
             margin: EdgeInsets.symmetric(vertical: 0),
             padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
             width: size.width * 1,
-            height: 430,
+            height: (size.height / 5) * 4 - 160,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/data_model.jpg'),
@@ -185,7 +196,7 @@ class _DetailPageState extends State<DetailPage> {
                                     vertical: 10, horizontal: 5),
                                 child: Container(
                                   color: Colors.black.withOpacity(0.1),
-                                  height: 370,
+                                  height: (size.height / 5) * 4 - 220,
                                   child: TabBarView(
                                     children: [
                                       SingleChildScrollView(
@@ -527,6 +538,9 @@ class _DetailPageState extends State<DetailPage> {
                                               height: 20,
                                             ),
                                             Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
                                               color:
                                                   Colors.black.withOpacity(0.8),
                                               child: Padding(
@@ -559,7 +573,7 @@ class _DetailPageState extends State<DetailPage> {
                                             children: <Widget>[
                                               Container(
                                                 color: Colors.black
-                                                    .withOpacity(0.5),
+                                                    .withOpacity(0.8),
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(
                                                       10.0),
@@ -592,7 +606,7 @@ class _DetailPageState extends State<DetailPage> {
                                                 children: <Widget>[
                                                   Container(
                                                     color: Colors.black
-                                                        .withOpacity(0.5),
+                                                        .withOpacity(0.8),
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(
@@ -650,7 +664,7 @@ class _DetailPageState extends State<DetailPage> {
                                                   ),
                                                   Container(
                                                     color: Colors.black
-                                                        .withOpacity(0.5),
+                                                        .withOpacity(0.8),
                                                     child: Padding(
                                                       padding:
                                                           const EdgeInsets.all(
@@ -701,8 +715,11 @@ class _DetailPageState extends State<DetailPage> {
                                             height: 15,
                                           ),
                                           Container(
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
                                             color:
-                                                Colors.black.withOpacity(0.5),
+                                                Colors.black.withOpacity(0.8),
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(10.0),

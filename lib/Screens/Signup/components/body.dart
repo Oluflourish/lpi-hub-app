@@ -14,6 +14,7 @@ import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/components/rounded_input_field.dart';
 import 'package:lpi_app/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/functions/alertDialog.dart';
 import 'package:lpi_app/functions/googlesignin.dart';
 import 'package:lpi_app/functions/utility.dart';
@@ -26,7 +27,6 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
   final _auth = FirebaseAuth.instance;
-  
 
   String email;
 
@@ -44,11 +44,15 @@ class _BodyState extends State<Body> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: size.height * 0.03),
               Text(
                 "SIGNUP",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                    fontSize: 20),
               ),
-              SizedBox(height: size.height * 0.03),
+              SizedBox(height: size.height * 0),
               Image.asset(
                 "assets/images/register.png",
                 height: size.height * 0.35,
@@ -106,32 +110,34 @@ class _BodyState extends State<Body> {
                 },
               ),
               OrDivider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SocalIcon(
-                    iconSrc: "assets/icons/facebook.svg",
-                    press: () {},
-                  ),
-                  SocalIcon(
-                    iconSrc: "assets/icons/twitter.svg",
-                    press: () {},
-                  ),
-                  SocalIcon(
-                    iconSrc: "assets/icons/google-plus.svg",
-                    press: () {
-                      signInWithGoogle().whenComplete(() {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return RegisterScreen();
-                            },
-                          ),
-                        );
-                      });
-                    },
-                  ),
-                ],
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SocalIcon(
+                      iconSrc: "assets/icons/facebook.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/twitter.svg",
+                      press: () {},
+                    ),
+                    SocalIcon(
+                      iconSrc: "assets/icons/google-plus.svg",
+                      press: () {
+                        signInWithGoogle().whenComplete(() {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return RegisterScreen();
+                              },
+                            ),
+                          );
+                        });
+                      },
+                    ),
+                  ],
+                ),
               )
             ],
           ),
@@ -140,4 +146,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lpi_app/Screens/AllMembers/activeListPage.dart';
 import 'package:lpi_app/Screens/AllMembers/body.dart';
+import 'package:lpi_app/Screens/AllMembers/inActiveListPage.dart';
 
 class ListWithTabScreen extends StatefulWidget {
   static const String id = 'listtabview_screen';
@@ -10,6 +12,7 @@ class ListWithTabScreen extends StatefulWidget {
 class _ListWithTabScreenState extends State<ListWithTabScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -18,7 +21,6 @@ class _ListWithTabScreenState extends State<ListWithTabScreen> {
         ),
       ),
       child: DefaultTabController(
-        
         length: 3,
         child: Scaffold(
           backgroundColor: Colors.transparent,
@@ -78,11 +80,11 @@ class _ListWithTabScreenState extends State<ListWithTabScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 5),
                 child: Container(
                     color: Colors.black.withOpacity(0.8),
-                    height: 592,
+                    height: size.height - 148,
                     child: TabBarView(children: [
                       ListPage(),
-                      Icon(Icons.movie),
-                      Icon(Icons.games),
+                      ActiveListPage(),
+                      InActiveListPage(),
                     ])),
               ),
             ],

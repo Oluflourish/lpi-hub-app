@@ -41,7 +41,7 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
             Icons.lock,
             color: kPrimaryColor,
           ),
-          suffixIcon: (_obscureText = true)
+          suffixIcon: (_obscureText == true)
               ? InkResponse(
                   onTap: _toggle,
                   child: Icon(

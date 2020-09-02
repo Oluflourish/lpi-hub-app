@@ -9,6 +9,7 @@ import 'package:lpi_app/components/rounded_input_field.dart';
 import 'package:lpi_app/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/functions/utility.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,8 +43,8 @@ class _BodyState extends State<Body> {
     newuser = (logindata.getBool('login') ?? true);
     print(newuser);
     if (newuser == false) {
-      Navigator.pushReplacement(
-          context, new MaterialPageRoute(builder: (context) => DashboardScreen()));
+      Navigator.pushReplacement(context,
+          new MaterialPageRoute(builder: (context) => DashboardScreen()));
     }
   }
 
@@ -59,7 +60,10 @@ class _BodyState extends State<Body> {
             children: <Widget>[
               Text(
                 "LOGIN",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: kPrimaryColor,
+                    fontSize: 20),
               ),
               SizedBox(height: size.height * 0.03),
               Image.asset(
@@ -70,7 +74,7 @@ class _BodyState extends State<Body> {
               RoundedInputField(
                 hintText: "Your Email",
                 onChanged: (value) {
-                  email = value;
+                  email = value.trim();
                 },
               ),
               RoundedPasswordField(

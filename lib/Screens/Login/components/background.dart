@@ -13,6 +13,12 @@ class Background extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: size.height,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/data_model.jpg'),
+          fit: BoxFit.fill,
+        ),
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lpi_app/constants.dart';
 
 class Background extends StatelessWidget {
   final Widget child;
@@ -13,6 +14,13 @@ class Background extends StatelessWidget {
     return Container(
       height: size.height,
       width: double.infinity,
+      decoration: BoxDecoration(
+       
+        image: DecorationImage(
+          image: AssetImage('assets/images/data_model.jpg'),
+          fit: BoxFit.fill,
+        ),
+      ),
       // Here i can use size.width but use double.infinity because both work as a same
       child: Stack(
         alignment: Alignment.center,

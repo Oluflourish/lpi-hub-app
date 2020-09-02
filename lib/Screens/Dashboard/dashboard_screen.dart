@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,6 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         setState(() {
           loggedInUser = user;
           profile = loggedInUser.email;
+          //profile = loggedInUser.displayName;
         });
 
         print(loggedInUser.email);
@@ -49,6 +51,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
     } catch (e) {
       print(e);
     }
+  }
+
+  getCount() async {
+    var qn = Firestore.instance
+        .collection('members')
+        .where("isloggedIn", isEqualTo: true)
+        .limit(1)
+        .getDocuments();
   }
 
   Items2 item1 = new Items2(
@@ -81,6 +91,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     List<Items2> myList = [item1, item2, item3, item4];
     return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/data_model.jpg'),
@@ -98,8 +110,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               children: <Widget>[
                 Flexible(
                     child: Container(
-                  width: 360,
-                  height: 125,
+                  width: MediaQuery.of(context).size.width,
+                  height: (MediaQuery.of(context).size.height) / 5,
                   color: Colors.transparent,
                   child: GridView.count(
                     crossAxisCount: 2,
@@ -201,7 +213,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             style: GoogleFonts.openSans(
                                 textStyle: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
@@ -250,6 +262,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 }
+
+class QuerySnapshot {}
 
 class Items2 {
   String title;
