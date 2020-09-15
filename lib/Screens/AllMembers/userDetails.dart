@@ -2,6 +2,8 @@ import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_progress/gradient_progress.dart';
+import 'package:intl/intl.dart';
 import 'package:lpi_app/Screens/Scan/genScan.dart';
 import 'package:lpi_app/components/rectangle_input_field.dart';
 import 'package:lpi_app/components/rounded_button.dart';
@@ -19,6 +21,8 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  AnimationController _animationController;
+  @override
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -430,7 +434,12 @@ class _DetailPageState extends State<DetailPage> {
                                                         )),
                                                         Expanded(
                                                             child: Text(
-                                                          'Aug 2, 2020',
+                                                          DateFormat('yMMMd')
+                                                              .format(widget
+                                                                  .member
+                                                                  .data[
+                                                                      "createdAt"]
+                                                                  .toDate()),
                                                           textAlign:
                                                               TextAlign.end,
                                                           style: TextStyle(
@@ -449,12 +458,12 @@ class _DetailPageState extends State<DetailPage> {
                                                       children: <Widget>[
                                                         Expanded(
                                                           child: Text(
-                                                            widget
-                                                                .member
-                                                                .data[
-                                                                    "createdAt"]
-                                                                .toDate()
-                                                                .toString(),
+                                                            DateFormat('yMMMd')
+                                                                .format(widget
+                                                                    .member
+                                                                    .data[
+                                                                        "createdAt"]
+                                                                    .toDate()),
                                                             style: TextStyle(
                                                                 color: Colors
                                                                     .white),
@@ -490,10 +499,12 @@ class _DetailPageState extends State<DetailPage> {
                                                               .start,
                                                       children: <Widget>[
                                                         Text(
-                                                          widget.member
-                                                              .data["createdAt"]
-                                                              .toDate()
-                                                              .toString(),
+                                                          DateFormat('yMMMd')
+                                                              .format(widget
+                                                                  .member
+                                                                  .data[
+                                                                      "createdAt"]
+                                                                  .toDate()),
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white),

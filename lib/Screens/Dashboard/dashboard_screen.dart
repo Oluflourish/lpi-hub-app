@@ -152,11 +152,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                     color: Colors.black.withOpacity(0.5),
                                     width: 50,
                                     height: 54.5,
-                                    child: Flexible(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(data.img),
-                                      ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Image.asset(data.img),
                                     ),
                                   ),
                                   Padding(
@@ -192,9 +190,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   ),
                 ))
               ],
-            ),
-            SizedBox(
-              height: 10,
             ),
             Padding(
               padding: EdgeInsets.only(left: 16, right: 16),

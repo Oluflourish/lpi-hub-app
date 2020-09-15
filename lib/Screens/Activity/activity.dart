@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ActivityScreen extends StatefulWidget {
   static const String id = 'activity_screen';
@@ -76,10 +77,11 @@ class _ActivityPageState extends State<ActivityPage> {
                       ),
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
+                    Timestamp now = snapshot.data[index].data["actionTime"];
                     return ListTile(
                       leading: CircleAvatar(
                         child: Text(
-                          (index+1).toString(),
+                          (index + 1).toString(),
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         ),
@@ -96,9 +98,7 @@ class _ActivityPageState extends State<ActivityPage> {
                         style: TextStyle(color: Colors.white),
                       ),
                       subtitle: Text(
-                        snapshot.data[index].data["actionTime"]
-                            .toDate()
-                            .toString(),
+                        '${DateFormat('yMMMd').format(now.toDate())}.',
                         style: TextStyle(color: Colors.white),
                       ),
                     );
