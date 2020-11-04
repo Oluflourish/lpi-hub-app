@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/Screens/Signup/components/body.dart';
+import 'package:lpi_app/screens/Signup/components/body.dart';
 
 class SignUpScreen extends StatelessWidget {
   static const String id = 'signup_screen';

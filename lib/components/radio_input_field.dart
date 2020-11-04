@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lpi_app/constants.dart';
-import '../Screens/UserRegistration/components/uploader.dart';
+import '../screens/UserRegistration/components/uploader.dart';
 
 class DualRadioButton extends StatefulWidget {
   final String title;

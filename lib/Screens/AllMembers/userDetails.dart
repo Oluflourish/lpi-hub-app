@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_progress/gradient_progress.dart';
 import 'package:intl/intl.dart';
-import 'package:lpi_app/Screens/Scan/genScan.dart';
+import 'package:lpi_app/screens/Scan/genScan.dart';
 import 'package:lpi_app/components/rectangle_input_field.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';

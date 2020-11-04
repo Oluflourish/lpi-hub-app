@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lpi_app/Screens/AllMembers/userDetails.dart';
+import 'package:lpi_app/screens/AllMembers/userDetails.dart';
 
 class InActiveListPage extends StatefulWidget {
   @override

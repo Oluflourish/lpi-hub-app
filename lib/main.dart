@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/Screens/Activity/activity.dart';
-import 'package:lpi_app/Screens/AllMembers/body.dart';
-import 'package:lpi_app/Screens/Login/login_screen.dart';
-import 'package:lpi_app/Screens/Scan/genScan.dart';
-import 'package:lpi_app/Screens/Scan/scanbody.dart';
-import 'package:lpi_app/Screens/Signup/signup_screen.dart';
-import 'package:lpi_app/Screens/TabView/body.dart';
-import 'package:lpi_app/Screens/UserRegistration/userReg_screen.dart';
-import 'package:lpi_app/Screens/Welcome/welcome_screen.dart';
+import 'package:lpi_app/screens/Activity/activity.dart';
+import 'package:lpi_app/screens/AllMembers/body.dart';
+import 'package:lpi_app/screens/Login/login_screen.dart';
+import 'package:lpi_app/screens/Scan/genScan.dart';
+import 'package:lpi_app/screens/Scan/scanbody.dart';
+import 'package:lpi_app/screens/Signup/signup_screen.dart';
+import 'package:lpi_app/screens/TabView/body.dart';
+import 'package:lpi_app/screens/UserRegistration/userReg_screen.dart';
+import 'package:lpi_app/screens/Welcome/welcome_screen.dart';
 import 'package:lpi_app/constants.dart';
-import 'package:lpi_app/Screens/Dashboard/dashboard_screen.dart';
+import 'package:lpi_app/screens/Dashboard/dashboard_screen.dart';
 
 import 'Screens/TabView/listwithtab.dart';
 

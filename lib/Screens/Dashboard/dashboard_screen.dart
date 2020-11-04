@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lpi_app/Screens/TabView/listwithtab.dart';
-import 'package:lpi_app/Screens/Welcome/welcome_screen.dart';
+import 'package:lpi_app/screens/TabView/listwithtab.dart';
+import 'package:lpi_app/screens/Welcome/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'components/griddashboard.dart';
 

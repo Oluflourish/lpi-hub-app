@@ -4,10 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:lpi_app/Screens/Dashboard/dashboard_screen.dart';
+import 'package:lpi_app/screens/Dashboard/dashboard_screen.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/functions/utility.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class Uploader extends StatefulWidget {
   final File file;

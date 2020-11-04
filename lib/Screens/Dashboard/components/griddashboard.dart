@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lpi_app/Screens/Activity/activity.dart';
-import 'package:lpi_app/Screens/AllMembers/body.dart';
-import 'package:lpi_app/Screens/Scan/genScan.dart';
-import 'package:lpi_app/Screens/Scan/scanbody.dart';
-import 'package:lpi_app/Screens/TabView/body.dart';
-import 'package:lpi_app/Screens/TabView/listwithtab.dart';
-import 'package:lpi_app/Screens/UserRegistration/userReg_screen.dart';
+import 'package:lpi_app/screens/Activity/activity.dart';
+import 'package:lpi_app/screens/AllMembers/body.dart';
+import 'package:lpi_app/screens/Scan/genScan.dart';
+import 'package:lpi_app/screens/Scan/scanbody.dart';
+import 'package:lpi_app/screens/TabView/body.dart';
+import 'package:lpi_app/screens/TabView/listwithtab.dart';
+import 'package:lpi_app/screens/UserRegistration/userReg_screen.dart';
 
 class GridDashboard extends StatelessWidget {
   final scan = ScanScreen();
