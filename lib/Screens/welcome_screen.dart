@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/Login/login_screen.dart';
-import 'package:lpi_app/screens/Signup/signup_screen.dart';
+import 'package:lpi_app/screens/login_screen.dart';
+import 'package:lpi_app/screens/signup_screen.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/constants.dart';
 

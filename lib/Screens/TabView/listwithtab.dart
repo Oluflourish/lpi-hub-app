@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/AllMembers/activeListPage.dart';
-import 'package:lpi_app/screens/AllMembers/body.dart';
-import 'package:lpi_app/screens/AllMembers/inActiveListPage.dart';
+import 'package:lpi_app/screens/members/active_members.dart';
+import 'package:lpi_app/screens/members/all_members.dart';
+// import 'package:lpi_app/screens/members/body.dart';
+import 'package:lpi_app/screens/members/in_active_members.dart';
 
 class ListWithTabScreen extends StatefulWidget {
   static const String id = 'listtabview_screen';
@@ -83,8 +84,8 @@ class _ListWithTabScreenState extends State<ListWithTabScreen> {
                     height: size.height - 148,
                     child: TabBarView(children: [
                       ListPage(),
-                      ActiveListPage(),
-                      InActiveListPage(),
+                      ActiveMembers(),
+                      InActiveMembers(),
                     ])),
               ),
             ],

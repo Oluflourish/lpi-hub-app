@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/AllMembers/userDetails.dart';
+import 'package:lpi_app/screens/members/member_details.dart';
 
-class InActiveListPage extends StatefulWidget {
+class ActiveMembers extends StatefulWidget {
   @override
-  _InActiveListPageState createState() => _InActiveListPageState();
+  _ActiveMembersState createState() => _ActiveMembersState();
 }
 
-class _InActiveListPageState extends State<InActiveListPage> {
+class _ActiveMembersState extends State<ActiveMembers> {
   Future _data;
   Future getMembers() async {
     var firestore = Firestore.instance;
     //we get all member documents here
     QuerySnapshot qn = await firestore
         .collection('members')
-        .where('isloggedIn', isEqualTo: false)
+        .where('isloggedIn', isEqualTo: true)
         .getDocuments();
     return qn.documents;
   }
@@ -24,7 +24,7 @@ class _InActiveListPageState extends State<InActiveListPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DetailPage(
+            builder: (context) => MemeberDetails(
                   member: member,
                 )));
   }

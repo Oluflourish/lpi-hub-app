@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/Activity/activity.dart';
-import 'package:lpi_app/screens/AllMembers/body.dart';
-import 'package:lpi_app/screens/Login/login_screen.dart';
-import 'package:lpi_app/screens/Scan/genScan.dart';
+import 'package:lpi_app/screens/activity.dart';
+import 'package:lpi_app/screens/login_screen.dart';
 import 'package:lpi_app/screens/Scan/scanbody.dart';
-import 'package:lpi_app/screens/Signup/signup_screen.dart';
+import 'package:lpi_app/screens/signup_screen.dart';
 import 'package:lpi_app/screens/TabView/body.dart';
-import 'package:lpi_app/screens/UserRegistration/userReg_screen.dart';
-import 'package:lpi_app/screens/Welcome/welcome_screen.dart';
+import 'package:lpi_app/screens/userReg_screen.dart';
+import 'package:lpi_app/screens/welcome_screen.dart';
 import 'package:lpi_app/constants.dart';
-import 'package:lpi_app/screens/Dashboard/dashboard_screen.dart';
+import 'package:lpi_app/screens/dashboard_screen.dart';
 
 import 'Screens/TabView/listwithtab.dart';
 
@@ -34,7 +32,7 @@ class MyApp extends StatelessWidget {
         DashboardScreen.id: (context) => DashboardScreen(),
         RegisterScreen.id: (context) => RegisterScreen(),
         ScanScreen.id: (context) => ScanScreen(),
-        ListViewScreen.id: (context) => ListViewScreen(),
+        // ListViewScreen.id: (context) => ListViewScreen(),
         TabViewScreen.id: (context) => TabViewScreen(),
         ListWithTabScreen.id: (context) => ListWithTabScreen(),
         ActivityScreen.id: (context) => ActivityScreen()

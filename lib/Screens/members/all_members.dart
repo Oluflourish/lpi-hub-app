@@ -1,22 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/AllMembers/userDetails.dart';
+import 'package:flutter/widgets.dart';
+import 'package:lpi_app/screens/members/member_details.dart';
 
-class ActiveListPage extends StatefulWidget {
+class ListPage extends StatefulWidget {
   @override
-  _ActiveListPageState createState() => _ActiveListPageState();
+  _ListPageState createState() => _ListPageState();
 }
 
-class _ActiveListPageState extends State<ActiveListPage> {
+String _downlaodUrl;
+
+class _ListPageState extends State<ListPage> {
   Future _data;
+
   Future getMembers() async {
     var firestore = Firestore.instance;
-    //we get all member documents here
-    QuerySnapshot qn = await firestore
-        .collection('members')
-        .where('isloggedIn', isEqualTo: true)
-        .getDocuments();
+    //we get all member documents here 
+    QuerySnapshot qn = await firestore.collection('members').getDocuments();
     return qn.documents;
   }
 
@@ -24,7 +25,7 @@ class _ActiveListPageState extends State<ActiveListPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DetailPage(
+            builder: (context) => MemeberDetails(
                   member: member,
                 )));
   }
@@ -34,6 +35,16 @@ class _ActiveListPageState extends State<ActiveListPage> {
     super.initState();
     //data is set here from the return in method
     _data = getMembers();
+  }
+
+  Future getImageUrl(imageRef) async {
+    StorageReference _reference =
+        FirebaseStorage.instance.ref().child(imageRef);
+    String downloadAddress = await _reference.getDownloadURL();
+    setState(() {
+      _downlaodUrl = downloadAddress;
+    });
+    return _downlaodUrl;
   }
 
   @override
@@ -59,13 +70,14 @@ class _ActiveListPageState extends State<ActiveListPage> {
                   itemBuilder: (_, index) {
                     return ListTile(
                       leading: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(100)),
+                        decoration:BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(100)) ,
                         child: ClipOval(
+                          
                           child:
                               (snapshot.data[index].data["downloadUrl"] != null)
                                   ? Image.network(

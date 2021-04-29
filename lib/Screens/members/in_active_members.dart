@@ -1,46 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:lpi_app/screens/Scan/genScan.dart';
+import 'package:lpi_app/screens/members/member_details.dart';
 
-import '../../constants.dart';
-import 'userDetails.dart';
-
-class ListViewScreen extends StatefulWidget {
-  static const String id = 'listview_screen';
+class InActiveMembers extends StatefulWidget {
   @override
-  _ListViewScreenState createState() => _ListViewScreenState();
+  _InActiveMembersState createState() => _InActiveMembersState();
 }
 
-class _ListViewScreenState extends State<ListViewScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Members',
-        ),
-      ),
-      body: ListPage(),
-    );
-  }
-}
-
-class ListPage extends StatefulWidget {
-  @override
-  _ListPageState createState() => _ListPageState();
-}
-
-String _downlaodUrl;
-
-class _ListPageState extends State<ListPage> {
+class _InActiveMembersState extends State<InActiveMembers> {
   Future _data;
-
   Future getMembers() async {
     var firestore = Firestore.instance;
-    //we get all member documents here 
-    QuerySnapshot qn = await firestore.collection('members').getDocuments();
+    //we get all member documents here
+    QuerySnapshot qn = await firestore
+        .collection('members')
+        .where('isloggedIn', isEqualTo: false)
+        .getDocuments();
     return qn.documents;
   }
 
@@ -48,7 +24,7 @@ class _ListPageState extends State<ListPage> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DetailPage(
+            builder: (context) => MemeberDetails(
                   member: member,
                 )));
   }
@@ -58,16 +34,6 @@ class _ListPageState extends State<ListPage> {
     super.initState();
     //data is set here from the return in method
     _data = getMembers();
-  }
-
-  Future getImageUrl(imageRef) async {
-    StorageReference _reference =
-        FirebaseStorage.instance.ref().child(imageRef);
-    String downloadAddress = await _reference.getDownloadURL();
-    setState(() {
-      _downlaodUrl = downloadAddress;
-    });
-    return _downlaodUrl;
   }
 
   @override
@@ -93,14 +59,13 @@ class _ListPageState extends State<ListPage> {
                   itemBuilder: (_, index) {
                     return ListTile(
                       leading: Container(
-                        decoration:BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(100)) ,
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2,
+                            ),
+                            borderRadius: BorderRadius.circular(100)),
                         child: ClipOval(
-                          
                           child:
                               (snapshot.data[index].data["downloadUrl"] != null)
                                   ? Image.network(

@@ -1,27 +1,22 @@
-import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_progress/gradient_progress.dart';
 import 'package:intl/intl.dart';
 import 'package:lpi_app/screens/Scan/genScan.dart';
-import 'package:lpi_app/components/rectangle_input_field.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../constants.dart';
 
-class DetailPage extends StatefulWidget {
+class MemeberDetails extends StatefulWidget {
   final DocumentSnapshot member;
-  DetailPage({this.member});
+  MemeberDetails({this.member});
 
   @override
-  _DetailPageState createState() => _DetailPageState();
+  _MemeberDetailsState createState() => _MemeberDetailsState();
 }
 
-class _DetailPageState extends State<DetailPage> {
-  AnimationController _animationController;
-  @override
+class _MemeberDetailsState extends State<MemeberDetails> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

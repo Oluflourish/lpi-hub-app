@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:lpi_app/screens/Dashboard/dashboard_screen.dart';
-import 'package:lpi_app/screens/Signup/signup_screen.dart';
+import 'package:lpi_app/screens/dashboard_screen.dart';
+import 'package:lpi_app/screens/signup_screen.dart';
 import 'package:lpi_app/components/already_have_an_account_acheck.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/components/rounded_input_field.dart';
