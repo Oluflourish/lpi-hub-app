@@ -3,20 +3,22 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lpi_app/screens/members/member_details.dart';
+import 'package:lpi_app/utils/colors.dart';
+import 'package:lpi_app/widgets/member_item.dart';
 
-class ListPage extends StatefulWidget {
+class AllMembers extends StatefulWidget {
   @override
-  _ListPageState createState() => _ListPageState();
+  _AllMembersState createState() => _AllMembersState();
 }
 
 String _downlaodUrl;
 
-class _ListPageState extends State<ListPage> {
+class _AllMembersState extends State<AllMembers> {
   Future _data;
 
   Future getMembers() async {
     var firestore = Firestore.instance;
-    //we get all member documents here 
+    //we get all member documents here
     QuerySnapshot qn = await firestore.collection('members').getDocuments();
     return qn.documents;
   }
@@ -67,39 +69,11 @@ class _ListPageState extends State<ListPage> {
                         thickness: 0.2,
                       ),
                   itemCount: snapshot.data.length,
-                  itemBuilder: (_, index) {
-                    return ListTile(
-                      leading: Container(
-                        decoration:BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(100)) ,
-                        child: ClipOval(
-                          
-                          child:
-                              (snapshot.data[index].data["downloadUrl"] != null)
-                                  ? Image.network(
-                                      snapshot.data[index].data["downloadUrl"],
-                                      fit: BoxFit.contain,
-                                    )
-                                  : Image.network(
-                                      'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                        ),
-                      ),
-                      title: Text(
-                        snapshot.data[index].data["firstname"].toString() +
-                            ' ' +
-                            snapshot.data[index].data["surname"].toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        snapshot.data[index].data["email"].toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
+                  itemBuilder: (context, index) {
+                    var userData = snapshot.data[index];
+
+                    return MemberItem(
+                      userData: userData,
                       onTap: () => navigateToDetail(snapshot.data[index]),
                     );
                   });

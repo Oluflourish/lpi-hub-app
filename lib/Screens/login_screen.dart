@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lpi_app/utils/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lpi_app/screens/dashboard_screen.dart';
 import 'package:lpi_app/screens/signup_screen.dart';
@@ -68,18 +69,18 @@ class _LoginScreenState extends State<LoginScreen> {
               top: 0,
               left: 0,
               child: Image.asset(
-                "assets/images/main_top.png",
+                "assets/images/lpi_hub_white.png",
                 width: size.width * 0,
               ),
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.asset(
-                "assets/images/login_bottom.png",
-                width: size.width * 0,
-              ),
-            ),
+            // Positioned(
+            //   bottom: 0,
+            //   right: 0,
+            //   child: Image.asset(
+            //     "assets/images/login_bottom.png",
+            //     width: size.width * 0,
+            //   ),
+            // ),
             SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     "LOGIN",
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: kPrimaryColor,
+                        color: AppColors.primaryColor,
                         fontSize: 20),
                   ),
                   SizedBox(height: size.height * 0.03),

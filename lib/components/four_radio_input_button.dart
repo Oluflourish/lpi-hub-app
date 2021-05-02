@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lpi_app/constants.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 class QuadDualRadioButton extends StatefulWidget {
   final String title;
@@ -45,7 +46,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       child: Card(
       
-        color: kPrimaryLightColor,
+        color: AppColors.secondaryColor,
         elevation: 3.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
@@ -73,7 +74,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                     Radio(
                       hoverColor: Colors.white,
                       value: 2,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),
@@ -91,7 +92,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                   children: <Widget>[
                     Radio(
                       value: 3,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),
@@ -109,7 +110,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                   children: <Widget>[
                     Radio(
                       value: 4,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),
@@ -127,7 +128,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                   children: <Widget>[
                     Radio(
                       value: 5,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),
@@ -145,7 +146,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                   children: <Widget>[
                     Radio(
                       value: 6,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),
@@ -163,7 +164,7 @@ class _QuadDualRadioButtonState extends State<QuadDualRadioButton> {
                   children: <Widget>[
                     Radio(
                       value: 7,
-                      activeColor: kPrimaryColor,
+                      activeColor: AppColors.primaryColor,
                       groupValue: widget.selectedValue2,
                       onChanged: widget.onChanged,
                     ),

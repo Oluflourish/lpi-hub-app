@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 import '../constants.dart';
 
@@ -18,14 +19,14 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       children: <Widget>[
         Text(
           login ? "Don’t have an Account ? " : "Already have an Account ? ",
-          style: TextStyle(color: kPrimaryColor),
+          style: TextStyle(color: AppColors.primaryColor),
         ),
         GestureDetector(
           onTap: press,
           child: Text(
             login ? "Sign Up" : "Sign In",
             style: TextStyle(
-              color: kPrimaryColor,
+              color: AppColors.primaryColor,
               fontWeight: FontWeight.bold,
             ),
           ),

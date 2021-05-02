@@ -3,6 +3,7 @@ import 'package:lpi_app/screens/login_screen.dart';
 import 'package:lpi_app/screens/signup_screen.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/constants.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
    static const String id = 'welcome_screen';
@@ -23,18 +24,18 @@ class WelcomeScreen extends StatelessWidget {
             top: 0,
             left: 0,
             child: Image.asset(
-              "assets/images/main_top.png",
+              "assets/images/lpi_hub_white.png",
               width: size.width * 0,
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * 0,
-            ),
-          ),
+          // Positioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   child: Image.asset(
+          //     "assets/images/main_bottom.png",
+          //     width: size.width * 0,
+          //   ),
+          // ),
           SingleChildScrollView(
         child: Column(
           
@@ -44,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
             Text(
               "WELCOME TO LPI HUB",
               
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: kPrimaryColor),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: AppColors.primaryColor),
             ),
             SizedBox(height: size.height * 0),
             ColorFiltered(
@@ -52,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                 "assets/images/hands_up.jpg",
                 height: size.height * 0.45,
               ),
-              colorFilter: ColorFilter.mode(kPrimaryColor, BlendMode.darken),
+              colorFilter: ColorFilter.mode(AppColors.primaryColor, BlendMode.darken),
             ),
             SizedBox(height: size.height * 0.05),
             RoundedButton(

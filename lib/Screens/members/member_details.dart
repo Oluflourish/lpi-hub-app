@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lpi_app/screens/Scan/genScan.dart';
 import 'package:lpi_app/components/rounded_button.dart';
+import 'package:lpi_app/utils/colors.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
-import '../../constants.dart';
 
 class MemeberDetails extends StatefulWidget {
   final DocumentSnapshot member;
@@ -28,117 +27,113 @@ class _MemeberDetailsState extends State<MemeberDetails> {
               widget.member.data["surname"].toString(),
         ),
       ),
-      body: Column(
-        children: <Widget>[
-          //Image continer
-          Container(
-            height: (size.height / 5) + 80,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(kPrimaryColor, BlendMode.darken),
-                image: AssetImage('assets/images/hands_up.jpg'),
-                fit: BoxFit.fill,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/data_model.jpg'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  colorFilter: ColorFilter.mode(
+                      AppColors.primaryColor, BlendMode.modulate),
+                  image: AssetImage('assets/images/hands_up.jpg'),
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(top: 10.0),
-                  child: new Stack(
-                    fit: StackFit.loose,
-                    children: <Widget>[
-                      new Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.white,
-                                  width: 2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: new Stack(
+                      // fit: StackFit.loose,
+                      children: <Widget>[
+                        new Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(100)),
+                              child: ClipOval(
+                                child: SizedBox(
+                                  width: 180,
+                                  height: 180,
+                                  child: Image.network(widget
+                                      .member.data['downloadUrl']
+                                      .toString()),
                                 ),
-                                borderRadius: BorderRadius.circular(100)),
-                            child: ClipOval(
-                              child: SizedBox(
-                                width: 200,
-                                height: 200,
-                                child: Image.network(widget
-                                    .member.data['downloadUrl']
-                                    .toString()),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(top: 140.0, right: 0),
+                          ],
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(top: 140.0, right: 0),
+                            child: new Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new CircleAvatar(
+                                  backgroundColor: AppColors.primaryColor,
+                                  radius: 25.0,
+                                  child: InkResponse(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                GenerateScreen(
+                                              timestamp: widget
+                                                  .member.data['userid']
+                                                  .toString(),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: Icon(
+                                        Icons.crop_free,
+                                        color: Colors.black,
+                                      )),
+                                )
+                              ],
+                            )),
+                        Padding(
+                          padding: EdgeInsets.only(top: 140.0, left: 150.0),
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               new CircleAvatar(
-                                backgroundColor: kPrimaryColor,
+                                backgroundColor: AppColors.primaryColor,
                                 radius: 25.0,
-                                child: InkResponse(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => GenerateScreen(
-                                            timestamp: widget
-                                                .member.data['userid']
-                                                .toString(),
-                                          ),
-                                        ),
-                                      );
-                                      print(' tapp tapp...............');
-                                    },
-                                    child: Icon(
-                                      Icons.crop_free,
-                                      color: Colors.black,
-                                    )),
+                                child: IconButton(
+                                  icon: Icon(Icons.edit),
+                                  onPressed: () {},
+                                  color: Colors.black,
+                                ),
                               )
                             ],
-                          )),
-                      Padding(
-                        padding: EdgeInsets.only(top: 140.0, left: 150.0),
-                        child: new Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            new CircleAvatar(
-                              backgroundColor: kPrimaryColor,
-                              radius: 25.0,
-                              child: IconButton(
-                                icon: Icon(Icons.edit),
-                                onPressed: () {},
-                                color: Colors.black,
-                              ),
-                            )
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 0),
-            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-            width: size.width * 1,
-            height: (size.height / 5) * 4 - 160,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/data_model.jpg'),
-                fit: BoxFit.fill,
+                ],
               ),
             ),
-            child: Container(
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 0),
+              padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
               child: Column(
                 children: <Widget>[
-//Tab here
                   Container(
                     child: DefaultTabController(
                       length: 2,
@@ -150,39 +145,23 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                             child: Container(
                               height: 40,
                               decoration: new BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
+                                  color: AppColors.white,
                                   borderRadius: BorderRadius.circular(50)),
                               child: new TabBar(
-                                //indicatorSize: TabBarIndicatorSize.label,
-                                unselectedLabelColor: Colors.white,
-
+                                 unselectedLabelColor: AppColors.black,
                                 indicatorSize: TabBarIndicatorSize.tab,
+                                labelColor: AppColors.white,
                                 indicator: BoxDecoration(
-                                    gradient: LinearGradient(colors: [
-                                      Colors.black,
-                                      Colors.grey[850]
-                                    ]),
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Colors.redAccent),
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: AppColors.primaryColor,
+                                ),
+                                labelStyle: TextStyle(
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.w500),
+
                                 tabs: [
-                                  new Tab(
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Details',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
-                                  new Tab(
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Activities',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ),
+                                  new Tab(text: "DETAILS"),
+                                  new Tab(text: "ACTIVITIES"),
                                 ],
                               ),
                             ),
@@ -220,18 +199,19 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             child: Text(
                                                           'Firstname',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         )),
                                                         Expanded(
                                                             child: Text(
                                                           'Surname',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ))
                                                       ],
                                                     ),
+                                                    SizedBox(height: 4.0),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -260,9 +240,7 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         ))
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                    ),
+                                                    SizedBox(height: 20),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -274,11 +252,12 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         Text(
                                                           'Email',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ),
                                                       ],
                                                     ),
+                                                    SizedBox(height: 4.0),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -297,9 +276,7 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         ),
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                    ),
+                                                    SizedBox(height: 20),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -312,18 +289,19 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             child: Text(
                                                           'Phone',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         )),
                                                         Expanded(
                                                             child: Text(
                                                           'Gender',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ))
                                                       ],
                                                     ),
+                                                    SizedBox(height: 4.0),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -354,9 +332,7 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         )
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                    ),
+                                                    SizedBox(height: 20),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -368,11 +344,12 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         Text(
                                                           'Membership Type',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ),
                                                       ],
                                                     ),
+                                                    SizedBox(height: 4.0),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -392,9 +369,6 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                                   Colors.white),
                                                         ),
                                                       ],
-                                                    ),
-                                                    SizedBox(
-                                                      height: 20,
                                                     ),
                                                   ],
                                                 ),
@@ -423,8 +397,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             child: Text(
                                                           'Account Created',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         )),
                                                         Expanded(
                                                             child: Text(
@@ -437,8 +411,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                           textAlign:
                                                               TextAlign.end,
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ))
                                                       ],
                                                     ),
@@ -479,8 +453,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         Text(
                                                           'Last login',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ),
                                                       ],
                                                     ),
@@ -505,9 +479,7 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                         ),
                                                       ],
                                                     ),
-                                                    SizedBox(
-                                                      height: 20,
-                                                    ),
+                                                    SizedBox(height: 20),
                                                     Row(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
@@ -520,15 +492,15 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             child: Text(
                                                           'Last seen',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         )),
                                                         Expanded(
                                                             child: Text(
                                                           'Hub Presence',
                                                           style: TextStyle(
-                                                              color:
-                                                                  kPrimaryColor),
+                                                              color: AppColors
+                                                                  .primaryColor),
                                                         ))
                                                       ],
                                                     ),
@@ -595,7 +567,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                     center: new Text(
                                                       "70.0%",
                                                       style: new TextStyle(
-                                                          color: kPrimaryColor,
+                                                          color: AppColors
+                                                              .primaryColor,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontSize: 20.0),
@@ -629,8 +602,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                                   child: Text(
                                                                     'data',
                                                                     style: TextStyle(
-                                                                        color:
-                                                                            kPrimaryColor),
+                                                                        color: AppColors
+                                                                            .primaryColor),
                                                                   ),
                                                                 ),
                                                                 Text('data'),
@@ -655,7 +628,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                                       Colors
                                                                           .grey,
                                                                   progressColor:
-                                                                      kPrimaryLightColor,
+                                                                      AppColors
+                                                                          .secondaryColor,
                                                                 ),
                                                               ],
                                                             ),
@@ -682,8 +656,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             child: Text(
                                                               'data',
                                                               style: TextStyle(
-                                                                  color:
-                                                                      kPrimaryColor),
+                                                                  color: AppColors
+                                                                      .primaryColor),
                                                             ),
                                                           ),
                                                           Text('data'),
@@ -706,7 +680,8 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                                             backgroundColor:
                                                                 Colors.grey,
                                                             progressColor:
-                                                                kPrimaryColor,
+                                                                AppColors
+                                                                    .primaryColor,
                                                           ),
                                                         ],
                                                       ),
@@ -716,9 +691,7 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                                               ),
                                             ],
                                           ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
+                                          SizedBox(height: 15),
                                           Container(
                                             width: MediaQuery.of(context)
                                                 .size
@@ -757,11 +730,9 @@ class _MemeberDetailsState extends State<MemeberDetails> {
                   ),
                 ],
               ),
-
-//Build details here
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

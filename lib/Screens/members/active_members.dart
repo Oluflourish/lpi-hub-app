@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lpi_app/screens/members/member_details.dart';
+import 'package:lpi_app/widgets/member_item.dart';
 
 class ActiveMembers extends StatefulWidget {
   @override
@@ -57,37 +58,9 @@ class _ActiveMembersState extends State<ActiveMembers> {
                       ),
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
-                    return ListTile(
-                      leading: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 2,
-                            ),
-                            borderRadius: BorderRadius.circular(100)),
-                        child: ClipOval(
-                          child:
-                              (snapshot.data[index].data["downloadUrl"] != null)
-                                  ? Image.network(
-                                      snapshot.data[index].data["downloadUrl"],
-                                      fit: BoxFit.contain,
-                                    )
-                                  : Image.network(
-                                      'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png',
-                                      fit: BoxFit.contain,
-                                    ),
-                        ),
-                      ),
-                      title: Text(
-                        snapshot.data[index].data["firstname"].toString() +
-                            ' ' +
-                            snapshot.data[index].data["surname"].toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      subtitle: Text(
-                        snapshot.data[index].data["email"].toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    var userData = snapshot.data[index];
+                    return MemberItem(
+                      userData: userData,
                       onTap: () => navigateToDetail(snapshot.data[index]),
                     );
                   });

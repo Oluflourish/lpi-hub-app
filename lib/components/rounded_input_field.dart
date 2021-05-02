@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lpi_app/components/text_field_container.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 import '../constants.dart';
 
@@ -19,12 +20,12 @@ class RoundedInputField extends StatelessWidget {
     return TextFieldContainer(
       child: TextField(
         onChanged: onChanged,
-        cursorColor: kPrimaryColor,
+        cursorColor: AppColors.primaryColor,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           icon: Icon(
             icon,
-            color: kPrimaryColor,
+            color: AppColors.primaryColor,
           ),
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.white),

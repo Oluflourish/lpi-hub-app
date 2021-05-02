@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lpi_app/components/text_field_container.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 import '../constants.dart';
 
@@ -33,26 +34,26 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
         obscureText: _obscureText,
         style: TextStyle(color: Colors.white),
         onChanged: widget.onChanged,
-        cursorColor: kPrimaryColor,
+        cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
           hintText: "Password",
           hintStyle: TextStyle(color: Colors.white),
           icon: Icon(
             Icons.lock,
-            color: kPrimaryColor,
+            color: AppColors.primaryColor,
           ),
           suffixIcon: (_obscureText == true)
               ? InkResponse(
                   onTap: _toggle,
                   child: Icon(
                     Icons.visibility,
-                    color: kPrimaryColor,
+                    color: AppColors.primaryColor,
                   ))
               : InkResponse(
                   onTap: _toggle,
                   child: Icon(
                     Icons.lock,
-                    color: kPrimaryColor,
+                    color: AppColors.primaryColor,
                   ),
                 ),
           border: InputBorder.none,

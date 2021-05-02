@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lpi_app/constants.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 class DualRadioButton extends StatefulWidget {
   final String title;
@@ -37,7 +38,7 @@ class _DualRadioButtonState extends State<DualRadioButton> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
       child: Card(
-        color: kPrimaryLightColor,
+        color: AppColors.secondaryColor,
         elevation: 3.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5.0),
@@ -62,7 +63,7 @@ class _DualRadioButtonState extends State<DualRadioButton> {
                 Radio(
                   hoverColor: Colors.white,
                   value: 0,
-                  activeColor: kPrimaryColor,
+                  activeColor: AppColors.primaryColor,
                   groupValue: widget.selectedValue,
                   onChanged: widget.onChanged,
                 ),
@@ -75,7 +76,7 @@ class _DualRadioButtonState extends State<DualRadioButton> {
                 ),
                 Radio(
                   value: 1,
-                  activeColor: kPrimaryColor,
+                  activeColor: AppColors.primaryColor,
                   groupValue: widget.selectedValue,
                   onChanged: widget.onChanged,
                 ),

@@ -78,6 +78,50 @@ class _ActivityPageState extends State<ActivityPage> {
                   itemCount: snapshot.data.length,
                   itemBuilder: (_, index) {
                     Timestamp now = snapshot.data[index].data["actionTime"];
+                    bool isSignOut =
+                        snapshot.data[index].data["activity"] == 'Signed Out';
+
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 8.0),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            child: Text(
+                              (index + 1).toString(),
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            backgroundColor:
+                                isSignOut ? Colors.red : Colors.green,
+                          ),
+                          SizedBox(width: 18.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                snapshot.data[index].data["member"].toString() +
+                                    ' ' +
+                                    snapshot.data[index].data["activity"]
+                                        .toString()
+                                        .toLowerCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                ),
+                              ),
+                              SizedBox(height: 8.0),
+                              Text(
+                                '${DateFormat('yMMMd').format(now.toDate())}.',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 12.0),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+
                     return ListTile(
                       leading: CircleAvatar(
                         child: Text(
@@ -85,16 +129,14 @@ class _ActivityPageState extends State<ActivityPage> {
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         ),
-                        backgroundColor:
-                            snapshot.data[index].data["activity"] ==
-                                    'Signed Out'
-                                ? Colors.red
-                                : Colors.green,
+                        backgroundColor: isSignOut ? Colors.red : Colors.green,
                       ),
                       title: Text(
                         snapshot.data[index].data["member"].toString() +
                             ' just ' +
-                            snapshot.data[index].data["activity"].toString(),
+                            snapshot.data[index].data["activity"]
+                                .toString()
+                                .toLowerCase(),
                         style: TextStyle(color: Colors.white),
                       ),
                       subtitle: Text(

@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lpi_app/constants.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 final _firestore = Firestore.instance;
 
@@ -127,7 +128,7 @@ class _ScanState extends State<ScanScreen> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: RaisedButton(
-                  color: kPrimaryColor,
+                  color: AppColors.primaryColor,
                   textColor: Colors.black,
                   splashColor: Colors.blueGrey,
                   onPressed: getDoc,

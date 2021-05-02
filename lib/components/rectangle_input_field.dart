@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/components/text_field_container.dart';
-
-import '../constants.dart';
-
+import 'package:lpi_app/utils/colors.dart';
 class RectangleInputField extends StatelessWidget {
   final String hintText;
   final IconData icon;
@@ -19,12 +16,12 @@ class RectangleInputField extends StatelessWidget {
     return RectangleFieldContainer(
       child: TextField(
         onChanged: onChanged,
-        cursorColor: kPrimaryColor,
+        cursorColor: AppColors.primaryColor,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           icon: Icon(
             icon,
-            color: kPrimaryColor,
+            color: AppColors.primaryColor,
           ),
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.white),
@@ -51,7 +48,7 @@ final Widget child;
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 2),
       width: size.width * 0.9,
       decoration: BoxDecoration(
-        color: kPrimaryLightColor,
+        color: AppColors.secondaryColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: child,

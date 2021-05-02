@@ -10,6 +10,7 @@ import 'package:lpi_app/components/rounded_password_field.dart';
 import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/functions/googlesignin.dart';
 import 'package:lpi_app/functions/utility.dart';
+import 'package:lpi_app/utils/colors.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -51,7 +52,7 @@ class _BodyState extends State<Body> {
                 "SIGNUP",
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: kPrimaryColor,
+                    color: AppColors.primaryColor,
                     fontSize: 20),
               ),
               SizedBox(height: size.height * 0),
@@ -164,7 +165,7 @@ class OrDivider extends StatelessWidget {
             child: Text(
               "OR",
               style: TextStyle(
-                color: kPrimaryColor,
+                color: AppColors.primaryColor,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -212,18 +213,18 @@ class Background extends StatelessWidget {
             top: 0,
             left: 0,
             child: Image.asset(
-              "assets/images/signup_top.png",
+              "assets/images/lpi_hub_white.png",
               width: size.width * 0,
             ),
           ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/main_bottom.png",
-              width: size.width * 0,
-            ),
-          ),
+          // Positioned(
+          //   bottom: 0,
+          //   left: 0,
+          //   child: Image.asset(
+          //     "assets/images/main_bottom.png",
+          //     width: size.width * 0,
+          //   ),
+          // ),
           child,
         ],
       ),
@@ -248,10 +249,10 @@ class SocalIcon extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 10),
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: kPrimaryColor,
+          color: AppColors.primaryColor,
           border: Border.all(
             width: 2,
-            color: kPrimaryColor,
+            color: AppColors.primaryColor,
           ),
           shape: BoxShape.circle,
         ),

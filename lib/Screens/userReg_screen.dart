@@ -17,6 +17,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:lpi_app/screens/dashboard_screen.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/functions/utility.dart';
+import 'package:lpi_app/utils/colors.dart';
 
 
 FirebaseUser loggedInUser;
@@ -134,18 +135,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
               top: 0,
               left: 0,
               child: Image.asset(
-                "assets/images/main_top.png",
+                "assets/images/lpi_hub_white.png",
                 width: size.width * 0,
               ),
             ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Image.asset(
-                "assets/images/login_bottom.png",
-                width: size.width * 0,
-              ),
-            ),
+            // Positioned(
+            //   bottom: 0,
+            //   right: 0,
+            //   child: Image.asset(
+            //     "assets/images/login_bottom.png",
+            //     width: size.width * 0,
+            //   ),
+            // ),
             SingleChildScrollView(
               child: Column(
                 children: <Widget>[
@@ -181,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: <Widget>[
                                   (_imageFile != null)
                                       ? CircleAvatar(
-                                          backgroundColor: kPrimaryColor,
+                                          backgroundColor: AppColors.primaryColor,
                                           radius: 25.0,
                                           child: IconButton(
                                             icon: Icon(Icons.crop),
@@ -190,7 +191,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           ),
                                         )
                                       : new CircleAvatar(
-                                          backgroundColor: kPrimaryColor,
+                                          backgroundColor: AppColors.primaryColor,
                                           radius: 25.0,
                                           child: IconButton(
                                             icon: Icon(Icons.photo_camera),
@@ -208,7 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: <Widget>[
                                   (_imageFile != null)
                                       ? new CircleAvatar(
-                                          backgroundColor: kPrimaryColor,
+                                          backgroundColor: AppColors.primaryColor,
                                           radius: 25.0,
                                           child: IconButton(
                                             icon: Icon(Icons.refresh),
@@ -217,7 +218,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           ),
                                         )
                                       : new CircleAvatar(
-                                          backgroundColor: kPrimaryColor,
+                                          backgroundColor: AppColors.primaryColor,
                                           radius: 25.0,
                                           child: IconButton(
                                             icon: Icon(Icons.photo_library),

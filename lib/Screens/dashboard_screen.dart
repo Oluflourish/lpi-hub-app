@@ -2,17 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lpi_app/screens/TabView/listwithtab.dart';
+import 'package:lpi_app/screens/members/member_tabs.dart';
 import 'package:lpi_app/screens/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:lpi_app/screens/activity.dart';
-import 'package:lpi_app/screens/Scan/genScan.dart';
 import 'package:lpi_app/screens/Scan/scanbody.dart';
 import 'package:lpi_app/screens/userReg_screen.dart';
-
-
-
 
 class DashboardScreen extends StatefulWidget {
   static const String id = 'dashboard_screen';
@@ -68,35 +63,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
         .getDocuments();
   }
 
-  Items2 item1 = new Items2(
-      title: "MEMBERS",
-      subtitle: "32",
-      event: "3 Events",
-      img: "assets/images/qr-code.png",
-      color: Colors.green[400]);
-
-  Items2 item2 = new Items2(
-      title: "LOGGED IN",
-      subtitle: "1",
-      event: "4 Items",
-      img: "assets/images/seo-report.png",
-      color: Colors.purple[400]);
-  Items2 item3 = new Items2(
-      title: "ADMINS",
-      subtitle: "4",
-      event: "",
-      img: "assets/images/new.png",
-      color: Colors.blue[400]);
-  Items2 item4 = new Items2(
-      title: "SUBSCRIBED",
-      subtitle: "3",
-      event: "",
-      img: "assets/images/employee.png",
-      color: Colors.pink[400]);
-
   @override
   Widget build(BuildContext context) {
-    List<Items2> myList = [item1, item2, item3, item4];
+    var screenSize = MediaQuery.of(context).size;
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -107,99 +76,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("LPI HUB APP"),
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+        ),
         backgroundColor: Colors.transparent,
         body: Column(
           children: <Widget>[
-            SizedBox(
-              height: 30,
-            ),
             Row(
-              children: <Widget>[
-                Flexible(
-                    child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: (MediaQuery.of(context).size.height) / 5,
-                  color: Colors.transparent,
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    childAspectRatio: 16 / 5.5,
-                    padding: EdgeInsets.only(
-                      left: 16,
-                      right: 16,
-                    ),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: myList.map((data) {
-                      return InkResponse(
-                        onTap: () {
-                          if (myList.indexOf(data) == 0) {
-                            Navigator.pushNamed(context, ListWithTabScreen.id);
-                          }
-                          if (myList.indexOf(data) == 1) {
-                            Navigator.pushNamed(context, ListWithTabScreen.id);
-                          }
-                          if (myList.indexOf(data) == 2) {
-                            Navigator.pushNamed(context, ListWithTabScreen.id);
-                          }
-                          if (myList.indexOf(data) == 3) {
-                            Navigator.pushNamed(context, ListWithTabScreen.id);
-                          }
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: data.color,
-                              borderRadius: BorderRadius.circular(1)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  Container(
-                                    color: Colors.black.withOpacity(0.5),
-                                    width: 50,
-                                    height: 54.5,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.asset(data.img),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Text(
-                                          data.subtitle,
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Text(
-                                          data.title,
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ))
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DashboardCounter(
+                    title: "MEMBERS",
+                    count: "13",
+                    icon: "qr-code",
+                    color: Color(0xFF01C1F0)),
+                DashboardCounter(
+                    title: "LOGGED IN",
+                    count: "2",
+                    icon: "seo-report",
+                    color: Color(0xFFF39C11)),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                DashboardCounter(
+                    title: "ADMINS",
+                    count: "12",
+                    icon: "new",
+                    color: Color(0xFFFd34736)),
+                DashboardCounter(
+                    title: "SUBSCRIBED",
+                    count: "32",
+                    icon: "user_secret",
+                    color: Color(0xFF00A65A)),
+              ],
+            ),
+            SizedBox(height: 16),
             Padding(
-              padding: EdgeInsets.only(left: 16, right: 16),
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
               child: Container(
                 color: Colors.black.withOpacity(0.8),
                 child: Row(
@@ -215,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             style: GoogleFonts.openSans(
                                 textStyle: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 15,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
@@ -225,11 +142,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                           child: Text(
-                            "Home",
+                            "Last login:",
                             style: GoogleFonts.openSans(
                                 textStyle: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w600)),
                           ),
                         ),
@@ -254,10 +171,48 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 15,
+            SizedBox(height: 8.0),
+            Row(
+              children: [
+                DashboardCard(
+                  name: "SCAN QR CODE",
+                  icon: "qrcode",
+                  onTap: () => Navigator.pushNamed(context, ScanScreen.id),
+                ),
+                DashboardCard(
+                  name: "ACTIVITY LOG",
+                  icon: "list",
+                  onTap: () => Navigator.pushNamed(context, ActivityScreen.id),
+                ),
+              ],
             ),
-            GridDashboard()
+            Row(
+              children: [
+                DashboardCard(
+                  name: "NEW MEMBER",
+                  icon: "add_user",
+                  onTap: () => Navigator.pushNamed(context, RegisterScreen.id),
+                ),
+                DashboardCard(
+                  name: "MEMBERS",
+                  icon: "users",
+                  onTap: () =>
+                      Navigator.pushNamed(context, MemberTabs.id),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                DashboardCard(
+                  name: "ADMINS",
+                  icon: "shield",
+                ),
+                DashboardCard(
+                  name: "NOTIFICATIONS",
+                  icon: "notification",
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -265,7 +220,128 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-class QuerySnapshot {}
+class DashboardCard extends StatelessWidget {
+  const DashboardCard({
+    Key key,
+    @required this.name,
+    @required this.icon,
+    this.onTap,
+  }) : super(key: key);
+
+  final String name;
+  final String icon;
+  final Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        width: screenSize.width / 2 - 16,
+        margin: EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+        height: 140,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.8),
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset("assets/images/$icon.png",
+                width: 72, color: Colors.white),
+            SizedBox(height: 14),
+            Text(
+              name,
+              style: GoogleFonts.openSans(
+                textStyle: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class DashboardCounter extends StatelessWidget {
+  const DashboardCounter({
+    Key key,
+    @required this.icon,
+    @required this.count,
+    @required this.title,
+    @required this.color,
+  }) : super(key: key);
+
+  final String icon;
+  final String count;
+  final String title;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, MemberTabs.id);
+      },
+      child: Container(
+        margin: EdgeInsets.only(top: 10.0),
+        width: screenSize.width / 2 - 16,
+        height: 56.0,
+        decoration:
+            BoxDecoration(color: color, borderRadius: BorderRadius.circular(1)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  color: Colors.black.withOpacity(0.3),
+                  width: 64,
+                  height: 56,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Image.asset("assets/images/$icon.png"),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        count,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 6.0),
+                      Text(
+                        title,
+                        style: TextStyle(
+                            fontSize: 11.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class Items2 {
   String title;
@@ -274,120 +350,4 @@ class Items2 {
   String img;
   Color color;
   Items2({this.title, this.subtitle, this.event, this.img, this.color});
-}
-
-
-
-class GridDashboard extends StatelessWidget {
-  final scan = ScanScreen();
-  final gen = GenerateScreen();
-  Items item1 = new Items(
-      title: "SCAN QR CODE",
-      subtitle: "March, Wednesday",
-      event: "3 Events",
-      img: "assets/images/qr-code.png");
-
-  Items item2 = new Items(
-    title: "ACTIVITY LOG",
-    subtitle: "Bocali, Apple",
-    event: "4 Items",
-    img: "assets/images/seo-report.png",
-  );
-  Items item3 = new Items(
-    title: "NEW MEMBER",
-    subtitle: "Lucy Mao going to Office",
-    event: "",
-    img: "assets/images/new.png",
-  );
-  Items item4 = new Items(
-    title: "MEMBERS",
-    subtitle: "Rose favirited your Post",
-    event: "",
-    img: "assets/images/employee.png",
-  );
-  Items item5 = new Items(
-    title: "ADMINS",
-    subtitle: "Homework, Design",
-    event: "4 Items",
-    img: "assets/images/shield.png",
-  );
-  Items item6 = new Items(
-    title: "NOTIFICATIONS",
-    subtitle: "",
-    event: "2 Items",
-    img: "assets/images/notification.png",
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    List<Items> myList = [item1, item2, item3, item4, item5, item6];
-    var color = 0xff453658;
-    return Flexible(
-      child: GridView.count(
-          childAspectRatio: 1.0,
-          padding: EdgeInsets.only(left: 16, right: 16),
-          crossAxisCount: 2,
-          crossAxisSpacing: 18,
-          mainAxisSpacing: 18,
-          children: myList.map((data) {
-            return Container(
-              decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.8),
-                  borderRadius: BorderRadius.circular(10)),
-              child: InkResponse(
-                onTap: () {
-                  _onTileClicked(myList.indexOf(data));
-
-                  if (myList.indexOf(data) == 0) {
-                    Navigator.pushNamed(context, ScanScreen.id);
-                  }
-                  if (myList.indexOf(data) == 1) {
-                    Navigator.pushNamed(context, ActivityScreen.id);
-                  }
-                  if (myList.indexOf(data) == 3) {
-                    Navigator.pushNamed(context, ListWithTabScreen.id);
-                  }
-                  if (myList.indexOf(data) == 2) {
-                    Navigator.pushNamed(context, RegisterScreen.id);
-                  }
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      data.img,
-                      width: 42,
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      data.title,
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          }).toList()),
-    );
-  }
-}
-
-class Items {
-  String title;
-  String subtitle;
-  String event;
-  String img;
-  Items({this.title, this.subtitle, this.event, this.img});
-}
-
-void _onTileClicked(int index) {
-  debugPrint("You tapped on item $index");
-
-  //ScanScreen();
 }
