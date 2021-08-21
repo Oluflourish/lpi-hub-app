@@ -1,86 +1,81 @@
-import 'package:flutter/material.dart';
-import 'package:lpi_app/screens/login_screen.dart';
-import 'package:lpi_app/screens/signup_screen.dart';
-import 'package:lpi_app/components/rounded_button.dart';
-import 'package:lpi_app/constants.dart';
-import 'package:lpi_app/utils/colors.dart';
+import 'dart:async';
 
-class WelcomeScreen extends StatelessWidget {
-   static const String id = 'welcome_screen';
+import 'package:flutter/material.dart';
+import 'package:lpi_app/screens/dashboard_screen.dart';
+import 'package:lpi_app/screens/login_screen.dart';
+import 'package:lpi_app/utils/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class WelcomeScreen extends StatefulWidget {
+  static const String id = 'welcome_screen';
+
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool isLoggedIn;
+
+  checkUserLoggedIn() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    isLoggedIn = (pref.getBool('isLoggedIn') ?? false);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    checkUserLoggedIn();
+    Timer(Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (BuildContext context) {
+            if (isLoggedIn) {
+              return DashboardScreen();
+            } else {
+              return LoginScreen();
+            }
+          },
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: Container(
-      color: Colors.grey[850],
-      height: size.height,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/lpi_hub_white.png",
-              width: size.width * 0,
-            ),
-          ),
-          // Positioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   child: Image.asset(
-          //     "assets/images/main_bottom.png",
-          //     width: size.width * 0,
-          //   ),
-          // ),
-          SingleChildScrollView(
+      backgroundColor: AppColors.black,
+      body: Center(
         child: Column(
-          
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(height: size.height * 0.05),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              "assets/images/lpi_logo.png",
+              // "assets/images/lpi_hub_white.png",
+              height: 180,
+            ),
+            SizedBox(height: 36),
             Text(
-              "WELCOME TO LPI HUB",
-              
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: AppColors.primaryColor),
-            ),
-            SizedBox(height: size.height * 0),
-            ColorFiltered(
-                          child: Image.asset(
-                "assets/images/hands_up.jpg",
-                height: size.height * 0.45,
+              "INNOVATION",
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 36.0,
+                fontWeight: FontWeight.bold,
               ),
-              colorFilter: ColorFilter.mode(AppColors.primaryColor, BlendMode.darken),
             ),
-            SizedBox(height: size.height * 0.05),
-            RoundedButton(
-              text: "LOGIN",
-              textColor: Colors.black,
-              press: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
-            ),
-            RoundedButton(
-              text: "SIGN UP",
-              color: Colors.black,
-              textColor: Colors.white,
-              press: () {
-                Navigator.pushNamed(
-                 context,SignUpScreen.id
-                );
-              },
+            SizedBox(height: 8.0),
+            Text(
+              "HUB",
+              style: TextStyle(
+                color: AppColors.white,
+                fontSize: 56.0,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
       ),
-    
-        ],
-      ),
-    ),
-  
     );
   }
 }

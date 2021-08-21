@@ -1,0 +1,233 @@
+{
+  "project_info": {
+    "project_number": "930572634551",
+    "firebase_url": "https://lpi-hub-a1dcf.firebaseio.com",
+    "project_id": "lpi-hub-a1dcf",
+    "storage_bucket": "lpi-hub-a1dcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:06a0d78c177fee6b",
+        "android_client_info": {
+          "package_name": "com.example.flourish.lpihub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-9vmq7jo5dg7g4fddar6r8as30qncfjip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flourish.lpihub",
+            "certificate_hash": "401e29f1d013642f7a196d5b1e01dcf06d6cc3b3"
+          }
+        },
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:050c5eef7908f4f1",
+        "android_client_info": {
+          "package_name": "com.example.flourish.lpihubapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-4l4riqq8a2ab2fut0p7el2gqgvq5po05.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flourish.lpihubapp",
+            "certificate_hash": "401e29f1d013642f7a196d5b1e01dcf06d6cc3b3"
+          }
+        },
+        {
+          "client_id": "930572634551-6056evp4qcaqphgk5nc7hhed8d7o9jnl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flourish.lpihubapp",
+            "certificate_hash": "0e8eaef2d12d29a9b78c3716626ba7b69be08085"
+          }
+        },
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:6dab7b8cfddfe84a",
+        "android_client_info": {
+          "package_name": "com.example.flourish.lpihubmemberapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-d3kmjeh1kqp9f497c42mre5vs8a4ntu4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flourish.lpihubmemberapp",
+            "certificate_hash": "401e29f1d013642f7a196d5b1e01dcf06d6cc3b3"
+          }
+        },
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:5651fb511670f6a96d4032",
+        "android_client_info": {
+          "package_name": "com.example.lpi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-c67mbss02jnaed08hu057ev744pgravc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lpi_app",
+            "certificate_hash": "b3e1ac3db702ef0c76191dd3c6669073bb77ce55"
+          }
+        },
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:6ee045c5943a0faf",
+        "android_client_info": {
+          "package_name": "com.flourish.lpihub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930572634551:android:ae25353c4c1f3d616d4032",
+        "android_client_info": {
+          "package_name": "org.lpihub.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930572634551-puletqr9h12obt8ccidbvj3m71cj4p7a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.lpihub.app",
+            "certificate_hash": "b3e1ac3db702ef0c76191dd3c6669073bb77ce55"
+          }
+        },
+        {
+          "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwz_1uCWqB9ANTv6Up84ciV1JF7CusGfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930572634551-plojrmu7euvia2bvidtsgf2ga9bo1kbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

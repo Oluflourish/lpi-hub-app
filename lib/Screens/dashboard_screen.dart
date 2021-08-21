@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:lpi_app/screens/members/member_tabs.dart';
 import 'package:lpi_app/screens/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -129,25 +128,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
                           child: Text(
                             'Hello, $profile',
-                            style: GoogleFonts.openSans(
-                                textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.bold)),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
-                        SizedBox(
-                          height: 4,
-                        ),
+                        SizedBox(height: 4),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(5, 0, 0, 5),
                           child: Text(
                             "Last login:",
-                            style: GoogleFonts.openSans(
-                                textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w600)),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                       ],
@@ -196,8 +191,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 DashboardCard(
                   name: "MEMBERS",
                   icon: "users",
-                  onTap: () =>
-                      Navigator.pushNamed(context, MemberTabs.id),
+                  onTap: () => Navigator.pushNamed(context, MemberTabs.id),
                 ),
               ],
             ),
@@ -254,12 +248,10 @@ class DashboardCard extends StatelessWidget {
             SizedBox(height: 14),
             Text(
               name,
-              style: GoogleFonts.openSans(
-                textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold),
             ),
           ],
         ),

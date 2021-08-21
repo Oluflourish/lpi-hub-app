@@ -3,146 +3,164 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lpi_app/screens/login_screen.dart';
 import 'package:lpi_app/screens/userReg_screen.dart';
-import 'package:lpi_app/components/already_have_an_account_acheck.dart';
 import 'package:lpi_app/components/rounded_button.dart';
 import 'package:lpi_app/components/rounded_input_field.dart';
 import 'package:lpi_app/components/rounded_password_field.dart';
-import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/functions/googlesignin.dart';
 import 'package:lpi_app/functions/utility.dart';
 import 'package:lpi_app/utils/colors.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   static const String id = 'signup_screen';
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Body(),
-    );
-  }
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class Body extends StatefulWidget {
-  @override
-  _BodyState createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final _auth = FirebaseAuth.instance;
 
   String email;
-
   String password;
-
   bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return ModalProgressHUD(
-      inAsyncCall: showSpinner,
-      child: Background(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(height: size.height * 0.03),
-              Text(
-                "SIGNUP",
-                style: TextStyle(
+    var screenSize = MediaQuery.of(context).size;
+
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          colorFilter: new ColorFilter.mode(
+              AppColors.transparent.withOpacity(0.4), BlendMode.dstATop),
+          image: AssetImage('assets/images/hub2.jpeg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: AppColors.transparent,
+        body: SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            height: screenSize.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Image.asset("assets/images/lpi_hub_white.png"),
+                SizedBox(height: 36.0),
+                Text(
+                  "CREATE ACCOUNT",
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: AppColors.primaryColor,
-                    fontSize: 20),
-              ),
-              SizedBox(height: size.height * 0),
-              Image.asset(
-                "assets/images/register.png",
-                height: size.height * 0.35,
-                width: size.width * 0.8,
-              ),
-              RoundedInputField(
-                hintText: "Your Email",
-                onChanged: (value) {
-                  email = value;
-                },
-              ),
-              RoundedPasswordField(
-                onChanged: (value) {
-                  password = value;
-                },
-              ),
-              RoundedButton(
-                text: "SIGNUP",
-                press: () async {
-                  // print(email);
-                  // print(password);
-                  //where firebase auth comes in
-                  setState(() {
-                    showSpinner = true;
-                  });
-                  try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, RegisterScreen.id);
-                    }
-                  } catch (e) {
-                    print('Error caught ------>  ' + e.toString());
+                    fontSize: 28.0,
+                  ),
+                ),
+                SizedBox(height: 30.0),
+                RoundedInputField(
+                  hintText: "Email",
+                  onChanged: (value) {
+                    email = value;
+                  },
+                ),
+                RoundedPasswordField(
+                  onChanged: (value) {
+                    password = value;
+                  },
+                ),
+                SizedBox(height: 20.0),
+                RoundedButton(
+                  text: "CREATE ACCOUNT",
+                  press: () async {
                     setState(() {
-                      showSpinner = false;
+                      showSpinner = true;
                     });
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, RegisterScreen.id);
+                      }
+                    } catch (e) {
+                      print('Error caught ------>  ' + e.toString());
+                      setState(() {
+                        showSpinner = false;
+                      });
 
-                    Utility.getInstance().showAlertDialog(
-                        context, 'Sign Up Error', e.toString());
-                  }
-                },
-              ),
-              SizedBox(height: size.height * 0.03),
-              AlreadyHaveAnAccountCheck(
-                login: false,
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-              OrDivider(),
-              Container(
-                child: Row(
+                      Utility.getInstance().showAlertDialog(
+                          context, 'Sign Up Error', e.toString());
+                    }
+                  },
+                ),
+                SizedBox(height: 20.0),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SocalIcon(
-                      iconSrc: "assets/icons/facebook.svg",
-                      press: () {},
+                    Text(
+                      "Already have an Account ? ",
+                      style: TextStyle(
+                        color: AppColors.primaryColor,
+                        fontSize: 15.0,
+                      ),
                     ),
-                    SocalIcon(
-                      iconSrc: "assets/icons/twitter.svg",
-                      press: () {},
-                    ),
-                    SocalIcon(
-                      iconSrc: "assets/icons/google-plus.svg",
-                      press: () {
-                        signInWithGoogle().whenComplete(() {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return RegisterScreen();
-                              },
-                            ),
-                          );
-                        });
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return LoginScreen();
+                            },
+                          ),
+                        );
                       },
-                    ),
+                      child: Text(
+                        "LOGIN",
+                        style: TextStyle(
+                          color: AppColors.primaryColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0,
+                        ),
+                      ),
+                    )
                   ],
                 ),
-              )
-            ],
+                if (false) ...[
+                  OrDivider(),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SocalIcon(
+                          iconSrc: "assets/icons/facebook.svg",
+                          press: () {},
+                        ),
+                        SocalIcon(
+                          iconSrc: "assets/icons/twitter.svg",
+                          press: () {},
+                        ),
+                        SocalIcon(
+                          iconSrc: "assets/icons/google-plus.svg",
+                          press: () {
+                            signInWithGoogle().whenComplete(() {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return RegisterScreen();
+                                  },
+                                ),
+                              );
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ],
+            ),
           ),
         ),
       ),
@@ -217,14 +235,6 @@ class Background extends StatelessWidget {
               width: size.width * 0,
             ),
           ),
-          // Positioned(
-          //   bottom: 0,
-          //   left: 0,
-          //   child: Image.asset(
-          //     "assets/images/main_bottom.png",
-          //     width: size.width * 0,
-          //   ),
-          // ),
           child,
         ],
       ),

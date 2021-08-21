@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/utils/colors.dart';
 
 final _firestore = Firestore.instance;

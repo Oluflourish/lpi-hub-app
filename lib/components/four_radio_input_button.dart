@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lpi_app/constants.dart';
 import 'package:lpi_app/utils/colors.dart';
 
 class QuadDualRadioButton extends StatefulWidget {

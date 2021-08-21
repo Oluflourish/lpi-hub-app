@@ -10,7 +10,6 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:lpi_app/components/four_radio_input_button.dart';
 import 'package:lpi_app/components/radio_input_field.dart';
 import 'package:lpi_app/components/rectangle_input_field.dart';
-import 'package:lpi_app/constants.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
@@ -33,27 +32,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _auth = FirebaseAuth.instance;
 
   int selectedValue;
-
   int selectedValue2;
-
   String imagePath;
-
   String imageCloudPath;
-
   String firstname;
-
   String surname;
-
   String gender;
-
   String membershipType;
-
   String email;
-
   String phone;
-
   Timestamp created;
-
   File _imageFile;
 
   @override
@@ -456,15 +444,15 @@ class _UploaderState extends State<Uploader> {
         text: 'REGISTER MEMBER',
         press: () async {
           try {
-            _startUpload();
+            // _startUpload();
             Timestamp created = Timestamp.now();
 
-            await Future.delayed(const Duration(milliseconds: 5000), () {
-              setState(() {
-                // Here you can write your code for open new
-                getImageUrl(imageCloudPath);
-              });
-            });
+            // await Future.delayed(const Duration(milliseconds: 5000), () {
+            //   setState(() {
+            //     // Here you can write your code for open new
+            //     getImageUrl(imageCloudPath);
+            //   });
+            // });
 
             await Future.delayed(const Duration(milliseconds: 2000), () {
               print('The download path we seek is ---->  $_downlaodUrl');
